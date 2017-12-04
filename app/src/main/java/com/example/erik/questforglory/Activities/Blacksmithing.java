@@ -26,7 +26,6 @@ public class Blacksmithing extends AppCompatActivity {
     Skill charge;
     Skill mend;
     Skill defenseUp;
-    int test;
     GearPiece gearPiece;
     TextView level;
     TextView XP;
