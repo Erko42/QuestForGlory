@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_the_forest">
+
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:text="@string/level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="7"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/XP"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ascension" />
+
+    <TextView
+        android:id="@+id/XP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:text="@string/XP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="7"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@+id/level"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/skills" />
+
+    <TextView
+        android:id="@+id/ascension"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="ascension"
+        android:text="@string/ascension"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/skills"
+        app:layout_constraintTop_toBottomOf="@+id/level"
+        app:layout_constraintBottom_toTopOf="@+id/herbs" />
+
+    <TextView
+        android:id="@+id/skills"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="skills"
+        android:text="@string/skills"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintLeft_toRightOf="@+id/ascension"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
+        app:layout_constraintTop_toBottomOf="@+id/XP"
+        app:layout_constraintBottom_toTopOf="@+id/herbs" />
+
+    <TextView
+        android:id="@+id/glory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="glory"
+        android:text="@string/glory"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintLeft_toRightOf="@+id/skills"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/XP"
+        app:layout_constraintBottom_toTopOf="@+id/herbs"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/gold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_gold"
+        android:fontFamily="serif"
+        android:text="@string/gold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        app:layout_constraintVertical_weight="5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/herbs"
+        app:layout_constraintBottom_toTopOf="@+id/alchemy"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <TextView
+        android:id="@+id/herbs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_the_forest"
+        android:fontFamily="serif"
+        android:text="@string/herbs"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center_vertical"
+        app:layout_constraintVertical_weight="5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skills"
+        app:layout_constraintBottom_toTopOf="@+id/gold" />
+
+    <TextView
+        android:id="@+id/alchemy"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_the_forest"
+        android:fontFamily="serif"
+        android:text="@string/alchemy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="10"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gold" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_the_forest"
+        app:layout_constraintVertical_weight="57"
+        app:layout_constraintBottom_toTopOf="@+id/kingdom"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alchemy">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/consta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/healthPotionGrid"
+                android:layout_width="0dp"
+                android:layout_height="106dp"
+                android:background="@drawable/border_health"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/healthPotion"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/strike"
+                android:src="@drawable/health_potion"
+                app:layout_constraintTop_toTopOf="@+id/healthPotionGrid"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/healthPotionGrid"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <TextView
+                android:id="@+id/healthPotionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="@string/health_potion_info"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/healthPotionGrid"
+                app:layout_constraintLeft_toRightOf="@+id/healthPotion"
+                app:layout_constraintTop_toTopOf="@+id/healthPotionGrid" />
+
+            <TextView
+                android:id="@+id/healthPotionUpgrade"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_upgrade"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="upgradeHealthPotion"
+                android:text="@string/upgrade"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionGrid"
+                app:layout_constraintRight_toLeftOf="@+id/healthPotionCraft" />
+
+            <TextView
+                android:id="@+id/healthPotionCraft"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_the_forest"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="buyHealthPotionForHerbs"
+                android:text="@string/craft_herbs"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionGrid"
+                app:layout_constraintLeft_toRightOf="@+id/healthPotionUpgrade" />
+
+            <TextView
+                android:id="@+id/healthPotionSell"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_gold"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="sellHealthPotionForGold"
+                android:text="@string/sell"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionUpgrade"
+                app:layout_constraintRight_toLeftOf="@+id/healthPotionBuy" />
+
+            <TextView
+                android:id="@+id/healthPotionBuy"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_gold"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="buyHealthPotionForGold"
+                android:text="@string/buy"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionCraft"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/healthPotionSell" />
+
+            <TextView
+                android:id="@+id/damagePotionGrid"
+                android:layout_width="0dp"
+                android:layout_height="106dp"
+                android:background="@drawable/border_offensive"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionSell" />
+
+            <ImageView
+                android:id="@+id/damagePotion"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/strike"
+                android:src="@drawable/damage_potion"
+                app:layout_constraintBottom_toBottomOf="@+id/damagePotionGrid"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/damagePotionGrid"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/damagePotionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:fontFamily="serif"
+                android:text="@string/damage_potion_info"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/damagePotionGrid"
+                app:layout_constraintLeft_toRightOf="@+id/damagePotion"
+                app:layout_constraintTop_toBottomOf="@+id/healthPotionBuy"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/damagePotionUpgrade"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_upgrade"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="upgradeDamagePotion"
+                android:text="@string/upgrade"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/damagePotionGrid"
+                app:layout_constraintRight_toLeftOf="@+id/damagePotionCraft" />
+
+            <TextView
+                android:id="@+id/damagePotionCraft"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_the_forest"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="buyDamagePotionForHerbs"
+                android:text="@string/craft_herbs"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/damagePotionGrid"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/damagePotionUpgrade" />
+
+            <TextView
+                android:id="@+id/damagePotionSell"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_gold"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="sellDamagePotionForGold"
+                android:text="@string/sell"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/damagePotionBuy"
+                app:layout_constraintTop_toBottomOf="@+id/damagePotionUpgrade" />
+
+            <TextView
+                android:id="@+id/damagePotionBuy"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_gold"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="buyDamagePotionForGold"
+                android:text="@string/buy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/damagePotionCraft"
+                app:layout_constraintLeft_toRightOf="@+id/damagePotionSell" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/gear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="gear"
+        android:text="@string/gear"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/kingdom"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+
+    <TextView
+        android:id="@+id/kingdom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="kingdom"
+        android:text="@string/kingdom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/gear"
+        app:layout_constraintRight_toLeftOf="@+id/quests"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
+
+    <TextView
+        android:id="@+id/quests"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:onClick="quests"
+        android:text="@string/quests"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/kingdom"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintVertical_bias="1.0" />
+</android.support.constraint.ConstraintLayout>

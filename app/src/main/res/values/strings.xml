@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Quest For Glory</string>
+    <string name="quest_for_glory">Quest For Glory</string>
+    <string name="your_journey_begins_here">Your journey begins here!</string>
+    <string name="sound">Sound</string>
+    <string name="notifications">Notifications</string>
+    <string name="mainMenu">Main Menu</string>
+    <string name="settings">Settings</string>
+    <string name="start">Start</string>
+    <string name="newGame">New Game</string>
+    <string name="areYouSure">Are You Sure?\nAll Your Current\nGame Data\nWill Be Deleted</string>
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="level">Level 1</string>
+    <string name="XP">XP 0 / 200</string>
+    <string name="glory">Glory</string>
+    <string name="inventory">Inventory</string>
+    <string name="skills">Skills</string>
+    <string name="quest">Quest</string>
+    <string name="the_quest">Kill The Level 1 Monster In The Forest, Mountain and Ruin</string>
+    <string name="reward">Reward</string>
+    <string name="the_reward">1 Glory</string>
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="the_forest">The Forest\nLevel 1</string>
+    <string name="the_forest_rewards">Rewards 2 Herbs</string>
+    <string name="the_mountain">The Mountain\nLevel 1</string>
+    <string name="the_mountain_rewards">Rewards 2 Ores</string>
+    <string name="the_ruin">The Ruin\nLevel 1</string>
+    <string name="the_ruin_rewards">Rewards 2 SoulDust</string>
+    <string name="player">Player</string>
+    <string name="spriggan">Spriggan</string>
+    <string name="golem">Golem</string>
+    <string name="options">Options</string>
+    <string name="gear">Gear</string>
+    <string name="kingdom">Kingdom</string>
+    <string name="quests">Quests</string>
+    <string name="herbs">Herbs: 0</string>
+    <string name="ores">Ores: 0</string>
+    <string name="soulDust">SoulDust: 0</string>
+    <string name="gold">Gold: 0</string>
+    <string name="alchemy">Alchemy</string>
+    <string name="blacksmithing">Blacksmithing</string>
+    <string name="enchanting">Enchanting</string>
+    <string name="upgrade">Upgrade for\n50 Gold</string>
+    <string name="craft_herbs">Craft for\n5 Herbs</string>
+    <string name="craft_ores">Craft for\n5 Ores</string>
+    <string name="craft_soul_dust">Craft for\n5 Soul Dust</string>
+    <string name="buy">Buy for\n20 Gold</string>
+    <string name="sell">Sell for\n? Gold</string>
+    <string name="health_potion_info">Health Potion Level 1\nRestore + 250 Health\nAmount: 0</string>
+    <string name="damage_potion_info">Damage Potion Level 1\nDeal + 50 Damage\nfor 5 turns\nAmount: 0</string>
+    <string name="health_potion">Amount: 0</string>
+    <string name="damage_potion">Amount: 0</string>
+    <string name="player_health">Health: 100</string>
+    <string name="enemy_health">Health: 100</string>
+    <string name="ascension">Ascension</string>
+    <string name="ascend">Ascend</string>
+    <string name="transcendence">Transcendence</string>
+    <string name="transcend">Transcend</string>
+    <string name="ascendInfo">Start From The Beginning As A Stronger\nBeing. You Have To Spend All Your Glory\nAs You Will Keep All Your Glory\n\n(Requires Level 100)</string>
+    <string name="transcendInfo">Become A God And Win The Game!\n\n(Requires Level 400)</string>
+    <string name="areYouSureAscend">Are You Sure You\nWant To Ascend?"</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="quit">Quit</string>
+
+    <string name="youAreDead">You Are Dead!</string>
+    <string name="revive">Revive</string>
+
+    <string name="sprigganDefeated">Spriggan Defeated!</string>
+    <string name="golemDefeated">Golem Defeated!</string>
+
+    <string name="maxHealth">Max Health\n100</string>
+    <string name="defense">Defense\n0</string>
+    <string name="damage">Damage\n8</string>
+    <string name="critChance">Crit Chance\n0%</string>
+    <string name="blockChance">Block Chance\n0%</string>
+
+    <string name="skill_points">Skill Points:</string>
+    <string name="reset">Reset</string>
+
+    <string name="gloryAmount">Glory:</string>
+
+    <string name="upgradeStats">Upgrade +5%</string>
+
+    <string name="bonusBaseHealth">Bonus Base Health: 0%</string>
+    <string name="bonusBaseDefense">Bonus Base Defense: 0%</string>
+    <string name="bonusBaseDamage">Bonus Base Damage: 0%</string>
+    <string name="bonusXPYield">Bonus XP Yield: 0%</string>
+    <string name="bonusGoldYield">Bonus Gold Yield: 0%</string>
+    <string name="bonusHerbYield">Bonus Herb Yield: 0%</string>
+    <string name="bonusOreYield">Bonus Ore Yield: 0%</string>
+    <string name="bonusSoulDustYield">Bonus Soul Dust Yield: 0%</string>
+
+    <string name="home">Home</string>
+    <string name="Continue">Continue</string>
+
+    <string name="strike">Strike</string>
+    <string name="charge">Charge</string>
+    <string name="mend">mend</string>
+    <string name="defense_up">Defense Up</string>
+    <string name="strike_info">Strike Level 1\nDamaging enemies\nfor 100% damage</string>
+    <string name="charge_info">Charge Level 1 (CD: 3)\nDamaging enemies\nfor 50% damage\nStun for 1 turn</string>
+    <string name="mend_info">Mend Level 1 (CD: 4)\nHeal over time\nfor 10% max health\nfor 3 turns</string>
+    <string name="defense_up_info">Defense Up Level 44 (CD: 5)\nGain + 50% defense</string>
+    <string name="upgradeStrike">Upgrade +5% damage\n(Cost 1 Skill Point)</string>
+    <string name="upgradeCharge">Upgrade +1 stun and +1 CD turn\n (Cost 4 Skill Points)</string>
+    <string name="upgradeMend">Upgrade +1% max health\n (Cost 3 Skill Points)</string>
+    <string name="upgradeDefenseUp">Upgrade +3% defense\n (Cost 2 Skill Points)</string>
+
+    <string name="equip_or_unequip">Equip / Unequip</string>
+
+    <string name="main_hand">MainHand</string>
+    <string name="off_hand">OffHand</string>
+    <string name="head">Head</string>
+    <string name="shoulders">Shoulders</string>
+    <string name="chest">Chest</string>
+    <string name="hands">Hands</string>
+    <string name="wrists">Wrists</string>
+    <string name="waist">Waist</string>
+    <string name="legs">Legs</string>
+    <string name="feet">Feet</string>
+
+    <string name="offensiveGear">Offensive Gear</string>
+    <string name="defensiveGear">Defensive Gear</string>
+    <string name="sellGear">Sell Gear</string>
+
+    <string name="gear_pieces">Gear Pieces</string>
+    <string name="main_hand_swords">MainHand Swords</string>
+    <string name="off_hand_swords">OffHand Swords</string>
+    <string name="off_hand_shields">OffHand Shields</string>
+    <string name="helms">Helms</string>
+    <string name="pauldrons">Pauldrons</string>
+    <string name="chestplates">Chestplates</string>
+    <string name="gauntlets">Gauntlets</string>
+    <string name="bracers">Bracers</string>
+    <string name="belts">Belts</string>
+    <string name="legplates">Legplates</string>
+    <string name="sabatons">Sabatons</string>
+
+    <string name="common_gear_piece">Level 1 Common\nGear Piece</string>
+    <string name="uncommon_gear_piece">Level 1 Uncommon\nGear Piece</string>
+    <string name="rare_gear_piece">Level 1 Rare\nGear Piece</string>
+    <string name="epic_gear_piece">Level 1 Epic\nGear Piece</string>
+    <string name="legendary_gear_piece">Level 1 Legendary\nGear Piece</string>
+</resources>

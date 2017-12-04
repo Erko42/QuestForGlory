@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_the_forest">
+
+    <TextView
+        android:id="@+id/questForGlory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/quest_for_glory"
+        android:textStyle="normal|bold"
+        android:textSize="40sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:fontFamily="serif"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        app:layout_constraintVertical_weight="12"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/yourJourney" />
+
+    <TextView
+        android:id="@+id/yourJourney"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:fontFamily="serif"
+        android:text="@string/your_journey_begins_here"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintVertical_weight="12"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questForGlory"
+        app:layout_constraintBottom_toTopOf="@+id/mainSpacing3" />
+
+    <TextView
+        android:id="@+id/mainSpacing1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintTop_toBottomOf="@+id/yourJourney"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/start" />
+
+    <TextView
+        android:id="@+id/mainSpacing2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintTop_toBottomOf="@+id/yourJourney"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/start"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/mainSpacing3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintBottom_toTopOf="@+id/newGame"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/yourJourney" />
+
+    <TextView
+        android:id="@+id/mainSpacing4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintBottom_toTopOf="@+id/start"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/newGame" />
+
+    <TextView
+        android:id="@+id/mainSpacing5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toTopOf="@+id/settings"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/start" />
+
+    <TextView
+        android:id="@+id/mainSpacing6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toTopOf="@+id/Quit"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/settings" />
+
+    <TextView
+        android:id="@+id/mainSpacing7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintVertical_weight="4"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/Quit" />
+
+
+    <TextView
+        android:id="@+id/newGame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/start"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="newGame"
+        android:text="@string/newGame"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintVertical_weight="14"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintBottom_toTopOf="@+id/mainSpacing4"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpacing3" />
+
+    <TextView
+        android:id="@+id/start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="start"
+        android:text="@string/start"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintVertical_weight="14"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintBottom_toTopOf="@+id/mainSpacing5"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpacing4" />
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/newGame"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/settings"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintVertical_weight="14"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpacing5"
+        app:layout_constraintBottom_toTopOf="@+id/mainSpacing6"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2" />
+
+    <TextView
+        android:id="@+id/Quit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="quit"
+        android:text="@string/quit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintVertical_weight="14"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintTop_toBottomOf="@+id/mainSpacing6"
+        app:layout_constraintBottom_toTopOf="@+id/mainSpacing7" />
+
+    <TextView
+        android:id="@+id/areYouSureGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toRightOf="@+id/mainSpacing1"
+        app:layout_constraintRight_toLeftOf="@+id/mainSpacing2"
+        app:layout_constraintBottom_toBottomOf="@+id/start"
+        app:layout_constraintTop_toTopOf="@+id/newGame" />
+
+    <TextView
+        android:id="@+id/areYouSure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/areYouSure"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toTopOf="@+id/areYouSureGrid"
+        app:layout_constraintBottom_toTopOf="@+id/areYouSureOkay" />
+
+    <TextView
+        android:id="@+id/areYouSureOkay"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
+        android:visibility="invisible"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:fontFamily="serif"
+        android:background="@drawable/border_health"
+        android:gravity="center"
+        android:text="@string/okay"
+        android:textSize="18sp"
+        android:onClick="okay"
+        app:layout_constraintBottom_toBottomOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/start" />
+
+    <TextView
+        android:id="@+id/areYouSureCancel"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
+        android:visibility="invisible"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:fontFamily="serif"
+        android:background="@drawable/border_offensive"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textSize="18sp"
+        android:onClick="cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/areYouSureGrid"
+        app:layout_constraintLeft_toLeftOf="@+id/start" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border_the_forest">
+
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascension"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/XP"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7" />
+
+    <TextView
+        android:id="@+id/XP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_level_xp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/XP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/skills"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@+id/level"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7" />
+
+    <TextView
+        android:id="@+id/ascension"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/ascension"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascensionHeading"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/skills"
+        app:layout_constraintTop_toBottomOf="@+id/level"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/skills"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="skills"
+        android:text="@string/skills"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascensionHeading"
+        app:layout_constraintLeft_toRightOf="@+id/ascension"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
+        app:layout_constraintTop_toBottomOf="@+id/XP"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/glory"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="glory"
+        android:text="@string/glory"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascensionHeading"
+        app:layout_constraintLeft_toRightOf="@+id/skills"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/XP"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/ascensionHeading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/ascension"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascendInfo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skills"
+        app:layout_constraintVertical_weight="6" />
+
+    <TextView
+        android:id="@+id/ascendInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/ascendInfo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/transcendenceHeading"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ascensionHeading"
+        app:layout_constraintVertical_weight="20" />
+
+    <TextView
+        android:id="@+id/ascend"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_gambling"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="ascend"
+        android:text="@string/ascend"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascendTranscendSpacing1"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toBottomOf="@+id/transcendInfo"
+        app:layout_constraintVertical_weight="11" />
+
+    <TextView
+        android:id="@+id/transcendenceHeading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/transcendence"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/transcendInfo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ascendInfo"
+        app:layout_constraintVertical_weight="6" />
+
+    <TextView
+        android:id="@+id/transcendInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/transcendInfo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/ascend"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transcendenceHeading"
+        app:layout_constraintVertical_weight="15" />
+
+    <TextView
+        android:id="@+id/transcend"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_upgrade"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="transcendence"
+        android:text="@string/transcend"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascendTranscendSpacing2"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toBottomOf="@+id/ascendTranscendSpacing1"
+        app:layout_constraintVertical_weight="13" />
+
+    <TextView
+        android:id="@+id/ascendTranscendSpacing1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/transcend"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toBottomOf="@+id/ascend"
+        app:layout_constraintVertical_weight="3" />
+
+    <TextView
+        android:id="@+id/ascendTranscendSpacing2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/kingdom"
+        app:layout_constraintLeft_toLeftOf="@+id/ascendTranscendSpacing1"
+        app:layout_constraintRight_toRightOf="@+id/ascendTranscendSpacing1"
+        app:layout_constraintTop_toBottomOf="@+id/transcend"
+        app:layout_constraintVertical_weight="3" />
+
+    <TextView
+        android:id="@+id/ascendTranscendSpacing3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/gear"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toBottomOf="@+id/transcendInfo"
+        app:layout_constraintVertical_weight="30" />
+
+    <TextView
+        android:id="@+id/ascendTranscendSpacing4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/quests"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintLeft_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transcendInfo"
+        app:layout_constraintVertical_weight="30"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/areYouSureGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus_highlight"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_weight="50"
+        app:layout_constraintBottom_toBottomOf="@+id/transcend"
+        app:layout_constraintTop_toTopOf="@+id/ascend"
+        app:layout_constraintRight_toLeftOf="@+id/ascendTranscendSpacing4"
+        app:layout_constraintLeft_toRightOf="@+id/ascendTranscendSpacing3" />
+
+    <TextView
+        android:id="@+id/areYouSure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="@string/areYouSureAscend"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/areYouSureYes"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSureGrid"
+        app:layout_constraintRight_toRightOf="@+id/areYouSureGrid"
+        app:layout_constraintTop_toBottomOf="@+id/transcendInfo" />
+
+    <TextView
+        android:id="@+id/areYouSureYes"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
+        android:background="@drawable/border_health"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="yes"
+        android:text="@string/yes"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="@+id/areYouSure"
+        app:layout_constraintBottom_toBottomOf="@+id/areYouSureGrid"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/areYouSureNo"
+        android:layout_width="78dp"
+        android:layout_height="40dp"
+        android:background="@drawable/border_offensive"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="no"
+        android:text="@string/no"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/areYouSure"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/areYouSure"
+        app:layout_constraintBottom_toBottomOf="@+id/areYouSureGrid"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/gear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="gear"
+        android:text="@string/gear"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/kingdom"
+        app:layout_constraintTop_toBottomOf="@+id/ascendTranscendSpacing2"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/kingdom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="kingdom"
+        android:text="@string/kingdom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/gear"
+        app:layout_constraintRight_toLeftOf="@+id/quests"
+        app:layout_constraintTop_toBottomOf="@+id/ascendTranscendSpacing2"
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/quests"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:onClick="quests"
+        android:text="@string/quests"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/kingdom"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ascendTranscendSpacing2"
+        app:layout_constraintVertical_weight="8" />
+</android.support.constraint.ConstraintLayout>
