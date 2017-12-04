@@ -1,4 +1,4 @@
-package com.example.erik.questforglory.Classes;
+package com.example.erik.questforglory.classes;
 
 import java.io.Serializable;
 

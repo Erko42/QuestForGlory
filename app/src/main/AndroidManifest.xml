@@ -4,72 +4,84 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/quest_for_glory_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
+                <data android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/gizmos" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+                <!-- Accepts URIs that begin with "example://gizmos”
+                <data android:scheme="example"
+                      android:host="gizmos" />
+                -->
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.Quests"
+            android:name=".activities.Quests"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.TheForest"
+            android:name=".activities.TheForest"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Skills"
+            android:name=".activities.Skills"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Gear"
+            android:name=".activities.Gear"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Kingdom"
+            android:name=".activities.Kingdom"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Alchemy"
+            android:name=".activities.Alchemy"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Blacksmithing"
+            android:name=".activities.Blacksmithing"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Enchanting"
+            android:name=".activities.Enchanting"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.OffensiveGear"
+            android:name=".activities.OffensiveGear"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Glory"
+            android:name=".activities.Glory"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Settings"
+            android:name=".activities.Settings"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.BlacksmithingSell"
+            android:name=".activities.BlacksmithingSell"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.TheMountain"
+            android:name=".activities.TheMountain"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.OffensiveGearPieces"
+            android:name=".activities.OffensiveGearPieces"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.Ascension"
+            android:name=".activities.Ascension"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.DefensiveGear"
+            android:name=".activities.DefensiveGear"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Activities.DefensiveGearPieces"
+            android:name=".activities.DefensiveGearPieces"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".Activities.TheRuin"
+            android:name=".activities.TheRuin"
             android:screenOrientation="portrait"/>
     </application>
 </manifest>

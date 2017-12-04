@@ -1,11 +1,10 @@
-package com.example.erik.questforglory.Activities;
+package com.example.erik.questforglory.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.erik.questforglory.Activities.MainActivity;
 import com.example.erik.questforglory.R;
 
 public class Settings extends AppCompatActivity {

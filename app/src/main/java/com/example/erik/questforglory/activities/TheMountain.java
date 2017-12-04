@@ -1,4 +1,4 @@
-package com.example.erik.questforglory.Activities;
+package com.example.erik.questforglory.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,18 +11,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.erik.questforglory.Classes.GearPiece;
-import com.example.erik.questforglory.Classes.Monster;
-import com.example.erik.questforglory.Classes.Player;
-import com.example.erik.questforglory.Classes.Potion;
-import com.example.erik.questforglory.Classes.Skill;
-import com.example.erik.questforglory.Helpers.DatabaseHelper;
+import com.example.erik.questforglory.classes.GearPiece;
+import com.example.erik.questforglory.classes.Monster;
+import com.example.erik.questforglory.classes.Player;
+import com.example.erik.questforglory.classes.Potion;
+import com.example.erik.questforglory.classes.Skill;
+import com.example.erik.questforglory.helpers.DatabaseHelper;
 import com.example.erik.questforglory.R;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class TheRuin extends AppCompatActivity {
+public class TheMountain extends AppCompatActivity {
     DatabaseHelper db;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -87,7 +87,7 @@ public class TheRuin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_the_ruin);
+        setContentView(R.layout.activity_the_mountain);
 
         db = new DatabaseHelper(this);
 
@@ -473,8 +473,7 @@ public class TheRuin extends AppCompatActivity {
 
                                 if(theGearPiece.getRarity().equals("common")) {
                                     gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
-                                }
-                                else if(theGearPiece.getRarity().equals("uncommon")) {
+                                } else if(theGearPiece.getRarity().equals("uncommon")) {
                                     gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
                                 } else if(theGearPiece.getRarity().equals("rare")) {
                                     gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
@@ -823,7 +822,8 @@ public class TheRuin extends AppCompatActivity {
         }
     }
     public void useDamagePotion(View view) {
-        if (damagePotion.getAmount() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.INVISIBLE) {
+        if (damagePotion.getAmount() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.INVISIBLE)
+        {
             damagePotionImage.setImageAlpha(125);
             damagePotionDurationCooldown.setVisibility(View.VISIBLE);
             damagePotion.setOnDurationCooldown(true);

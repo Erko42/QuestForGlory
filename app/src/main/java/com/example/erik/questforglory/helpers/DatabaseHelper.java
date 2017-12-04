@@ -1,4 +1,4 @@
-package com.example.erik.questforglory.Helpers;
+package com.example.erik.questforglory.helpers;
 
 import android.content.ContentValues;
 import android.content.Context;

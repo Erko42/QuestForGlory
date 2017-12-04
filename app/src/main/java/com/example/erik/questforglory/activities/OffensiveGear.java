@@ -1,4 +1,4 @@
-package com.example.erik.questforglory.Activities;
+package com.example.erik.questforglory.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.erik.questforglory.Classes.GearPiece;
-import com.example.erik.questforglory.Classes.Monster;
-import com.example.erik.questforglory.Classes.Player;
-import com.example.erik.questforglory.Classes.Potion;
-import com.example.erik.questforglory.Classes.Skill;
+import com.example.erik.questforglory.classes.GearPiece;
+import com.example.erik.questforglory.classes.Monster;
+import com.example.erik.questforglory.classes.Player;
+import com.example.erik.questforglory.classes.Potion;
+import com.example.erik.questforglory.classes.Skill;
 import com.example.erik.questforglory.R;
 
 public class OffensiveGear extends AppCompatActivity {
