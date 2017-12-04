@@ -14,6 +14,7 @@ import com.example.erik.questforglory.classes.Skill;
 import com.example.erik.questforglory.R;
 
 public class OffensiveGear extends AppCompatActivity {
+
     Intent intent;
     Bundle bundle;
     Player player;
@@ -40,8 +41,6 @@ public class OffensiveGear extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offensive_gear);
 
-        bundle = new Bundle();
-
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
         golem = (Monster) getIntent().getSerializableExtra("golem");
@@ -53,10 +52,10 @@ public class OffensiveGear extends AppCompatActivity {
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        ores = (TextView) findViewById(R.id.ores);
-        gold = (TextView) findViewById(R.id.gold);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        ores = findViewById(R.id.ores);
+        gold = findViewById(R.id.gold);
 
         levelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -68,7 +67,9 @@ public class OffensiveGear extends AppCompatActivity {
         ores.setText(oresText);
         gold.setText(goldText);
     }
+
     public void saveObjectsInBundle() {
+        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);
@@ -82,80 +83,97 @@ public class OffensiveGear extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, Blacksmithing.class);
         saveObjectsInBundle();
     }
+
     public void helms(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Helm");
         saveObjectsInBundle();
     }
+
     public void pauldrons(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Pauldrons");
         saveObjectsInBundle();
     }
+
     public void chestplates(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Chestplate");
         saveObjectsInBundle();
     }
+
     public void mainHandSwords(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "MainHand Sword");
         saveObjectsInBundle();
     }
+
     public void offHandSwords(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "OffHand Sword");
         saveObjectsInBundle();
     }
+
     public void bracers(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Bracers");
         saveObjectsInBundle();
     }
+
     public void gauntlets(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Gauntlets");
         saveObjectsInBundle();
     }
+
     public void belts(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Belt");
         saveObjectsInBundle();
     }
+
     public void legplates(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Legplates");
         saveObjectsInBundle();
     }
+
     public void sabatons(View view) {
         intent = new Intent(this, OffensiveGearPieces.class);
         bundle.putString("gearPieceType", "Sabatons");
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

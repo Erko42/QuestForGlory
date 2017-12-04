@@ -144,22 +144,22 @@ public class DefensiveGearPieces extends AppCompatActivity {
                 gearPiecesText = "Pauldrons";
                 break;
             case "Chestplate":
-                gearPiecesText = "Chestplate";
+                gearPiecesText = "Chestplates";
                 break;
             case "Bracers":
                 gearPiecesText = "Bracers";
                 break;
             case "MainHand Sword":
-                gearPiecesText = "MainHand Sword";
+                gearPiecesText = "MainHand Swords";
                 break;
             case "OffHand Shield":
-                gearPiecesText = "OffHand Shield";
+                gearPiecesText = "OffHand Shields";
                 break;
             case "Gauntlets":
                 gearPiecesText = "Gauntlets";
                 break;
             case "Belt":
-                gearPiecesText = "Belt";
+                gearPiecesText = "Belts";
                 break;
             case "Legplates":
                 gearPiecesText = "Legplates";
@@ -284,54 +284,58 @@ public class DefensiveGearPieces extends AppCompatActivity {
 
     public void craftCommonGearPiece(View view) {
         if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost())) {
-            if (gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                    gearPiece.getIsEquiped(),
-                    gearPieceType,
-                    gearPiece.getRarity(),
-                    gearPiece.getStats(),
-                    gearPiece.getLevel(),
-                    0,
-                    0,
-                    gearPiece.getDamage() * 2,
-                    gearPiece.getBlockChance(),
-                    gearPiece.getCritChance(),
-                    gearPiece.getGoldCost(),
-                    gearPiece.getGoldWorth(),
-                    gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 2,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth(),
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth(),
-                        gearPiece.getDefense(),
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth(),
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 2,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 2,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth(),
+                            gearPiece.getDefense(),
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseOres(Math.round(theGearPiece.getOreCost()));
 
@@ -355,55 +359,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void buyCommonGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost())) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 2,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth(),
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if (gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 2,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth(),
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth(),
-                        gearPiece.getDefense(),
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth(),
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost())) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 2,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 2,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth(),
+                            gearPiece.getDefense(),
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth(),
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseGold(Math.round(gearPiece.getGoldCost()));
 
@@ -428,54 +436,58 @@ public class DefensiveGearPieces extends AppCompatActivity {
 
     public void craftUncommonGearPiece(View view) {
         if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 2)) {
-            if (gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 4,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if (gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 4,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 2,
-                        gearPiece.getDefense() * 2,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 4,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 4,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 2,
+                            gearPiece.getDefense() * 2,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseOres(Math.round(gearPiece.getOreCost() * 2));
 
@@ -500,54 +512,58 @@ public class DefensiveGearPieces extends AppCompatActivity {
 
     public void buyUncommonGearPiece(View view) {
         if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 2)) {
-            if (gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 4,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if (gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 4,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 2,
-                        gearPiece.getDefense() * 2,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 2,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 4,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 4,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 2,
+                            gearPiece.getDefense() * 2,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 2,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseGold(Math.round(gearPiece.getGoldCost() * 2));
 
@@ -571,55 +587,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void craftRareGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 3)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 6,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 6,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 3,
-                        gearPiece.getDefense() * 3,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 3)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 6,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 6,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 3,
+                            gearPiece.getDefense() * 3,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseOres(Math.round(gearPiece.getOreCost() * 3));
 
@@ -643,55 +663,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void buyRareGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 3)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 6,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 6,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 3,
-                        gearPiece.getDefense() * 3,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 3,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 3)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 6,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 6,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 3,
+                            gearPiece.getDefense() * 3,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 3,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseGold(Math.round(gearPiece.getGoldCost() * 3));
 
@@ -715,55 +739,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void craftEpicGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 4)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 8,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 8,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 4,
-                        gearPiece.getDefense() * 4,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 4)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 8,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 8,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 4,
+                            gearPiece.getDefense() * 4,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseOres(Math.round(gearPiece.getOreCost() * 4));
 
@@ -788,55 +816,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void buyEpicGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 4)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 8,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 8,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 4,
-                        gearPiece.getDefense() * 4,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 4,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 4)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 8,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 8,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 4,
+                            gearPiece.getDefense() * 4,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 4,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseGold(Math.round(gearPiece.getGoldCost() * 4));
 
@@ -860,55 +892,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void craftLegendaryGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 5)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 10,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 10,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 5,
-                        gearPiece.getDefense() * 5,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 5)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 10,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 10,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 5,
+                            gearPiece.getDefense() * 5,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseOres(Math.round(gearPiece.getOreCost() * 5));
 
@@ -932,55 +968,59 @@ public class DefensiveGearPieces extends AppCompatActivity {
     }
 
     public void buyLegendaryGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 5)) {
-            if(gearPieceType.equals("MainHand Sword")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        0,
-                        gearPiece.getDamage() * 10,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
-            } else if(gearPieceType.equals("OffHand Shield")) {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        0,
-                        gearPiece.getDefense() * 10,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
-            } else {
-                theGearPiece = new GearPiece(
-                        gearPiece.getIsEquiped(),
-                        gearPieceType,
-                        gearPiece.getRarity(),
-                        gearPiece.getStats(),
-                        gearPiece.getLevel(),
-                        gearPiece.getHealth() * 5,
-                        gearPiece.getDefense() * 5,
-                        0,
-                        gearPiece.getBlockChance(),
-                        gearPiece.getCritChance(),
-                        gearPiece.getGoldCost(),
-                        gearPiece.getGoldWorth() * 5,
-                        gearPiece.getOreCost());
-                theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 5)) {
+            switch (gearPieceType) {
+                case "MainHand Sword":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            0,
+                            gearPiece.getDamage() * 10,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)" + "\nDamage\n+" + Math.round(theGearPiece.getDamage()));
+                    break;
+                case "OffHand Shield":
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            0,
+                            gearPiece.getDefense() * 10,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
+                default:
+                    theGearPiece = new GearPiece(
+                            gearPiece.getIsEquiped(),
+                            gearPieceType,
+                            gearPiece.getRarity(),
+                            gearPiece.getStats(),
+                            gearPiece.getLevel(),
+                            gearPiece.getHealth() * 5,
+                            gearPiece.getDefense() * 5,
+                            0,
+                            gearPiece.getBlockChance(),
+                            gearPiece.getCritChance(),
+                            gearPiece.getGoldCost(),
+                            gearPiece.getGoldWorth() * 5,
+                            gearPiece.getOreCost());
+                    theGearPiece.setStats(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)" + "\nHealth\n+" + Math.round(theGearPiece.getHealth()) + "\nDefense\n+" + Math.round(theGearPiece.getDefense()));
+                    break;
             }
             player.decreaseGold(Math.round(theGearPiece.getGoldCost() * 5));
 

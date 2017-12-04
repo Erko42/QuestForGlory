@@ -69,6 +69,7 @@ public class DefensiveGear extends AppCompatActivity {
         ores.setText(oresText);
         gold.setText(goldText);
     }
+
     public void saveObjectsInBundle() {
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
@@ -83,80 +84,97 @@ public class DefensiveGear extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, Blacksmithing.class);
         saveObjectsInBundle();
     }
+
     public void helms(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Helm");
         saveObjectsInBundle();
     }
+
     public void pauldrons(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Pauldrons");
         saveObjectsInBundle();
     }
+
     public void chestplates(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Chestplate");
         saveObjectsInBundle();
     }
+
     public void mainHandSwords(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "MainHand Sword");
         saveObjectsInBundle();
     }
+
     public void offHandShields(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "OffHand Shield");
         saveObjectsInBundle();
     }
+
     public void bracers(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Bracers");
         saveObjectsInBundle();
     }
+
     public void gauntlets(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Gauntlets");
         saveObjectsInBundle();
     }
+
     public void belts(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Belt");
         saveObjectsInBundle();
     }
+
     public void legplates(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Legplates");
         saveObjectsInBundle();
     }
+
     public void sabatons(View view) {
         intent = new Intent(this, DefensiveGearPieces.class);
         bundle.putString("gearPieceType", "Sabatons");
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

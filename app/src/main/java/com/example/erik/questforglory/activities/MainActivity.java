@@ -16,9 +16,9 @@ import com.example.erik.questforglory.helpers.DatabaseHelper;
 import com.example.erik.questforglory.R;
 
 public class MainActivity extends AppCompatActivity {
+    
     DatabaseHelper db;
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     TextView newGame;
     TextView start;
     TextView areYouSureGrid;
@@ -46,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        newGame = (TextView) findViewById(R.id.newGame);
-        start = (TextView) findViewById(R.id.start);
-        areYouSureGrid = (TextView) findViewById(R.id.areYouSureGrid);
-        areYouSure = (TextView) findViewById(R.id.areYouSure);
-        areYouSureOkay = (TextView) findViewById(R.id.areYouSureOkay);
-        areYouSureCancel = (TextView) findViewById(R.id.areYouSureCancel);
+        newGame = findViewById(R.id.newGame);
+        start = findViewById(R.id.start);
+        areYouSureGrid = findViewById(R.id.areYouSureGrid);
+        areYouSure = findViewById(R.id.areYouSure);
+        areYouSureOkay = findViewById(R.id.areYouSureOkay);
+        areYouSureCancel = findViewById(R.id.areYouSureCancel);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
     }
+
     public void newGame(View view) {
         if (preferences.getBoolean("isCreated", false)) {
             newGame.setVisibility(View.INVISIBLE);
@@ -68,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
             initNewGame();
         }
     }
+
     public void start(View view) {
-        if(preferences.getBoolean("isCreated", false)) {
+        if (preferences.getBoolean("isCreated", false)) {
             player = new Player(
                     preferences.getBoolean("alive", false),
                     preferences.getFloat("requiredLevelToAscend", 0),
@@ -218,14 +219,15 @@ public class MainActivity extends AppCompatActivity {
             initNewGame();
         }
     }
-    public void okay(View view)
-    {
+
+    public void okay(View view) {
         initNewGame();
     }
-    public void initNewGame() {
-        isCreated = true;
 
+    public void initNewGame() {
         db.deleteAllData();
+
+        isCreated = true;
 
         player = new Player(true, 100,  1, 0, 200, 0, 0, 500, 500, 10, 50, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         spriggan = new Monster(true, 1, 1, 40, 750, 750, 50/1.5f, 30, 10, 0);
@@ -238,110 +240,111 @@ public class MainActivity extends AppCompatActivity {
         defenseUp = new Skill(1, 0, 0, 0, 20, 1, 1, 3, 3, false);
         gearPiece = new GearPiece(0, "gear piece", "rarity", "stats", 1, 50, 1, 5, 0, 0, 160, 120, 40);
 
-        editor.putBoolean("isCreated", isCreated).apply();
-        editor.putBoolean("alive", player.isAlive()).apply();
-        editor.putFloat("requiredLevelToAscend", player.getRequiredLevelToAscend()).apply();
-        editor.putFloat("level", player.getLevel()).apply();
-        editor.putFloat("XP", player.getXP()).apply();
-        editor.putFloat("XPToNextLevel", player.getXPToNextLevel()).apply();
-        editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-        editor.putFloat("glory", player.getGlory()).apply();
-        editor.putFloat("maxHealth", player.getMaxHealth()).apply();
-        editor.putFloat("baseHealth", player.getBaseHealth()).apply();
-        editor.putFloat("baseDefense", player.getBaseDefense()).apply();
-        editor.putFloat("baseDamage", player.getBaseDamage()).apply();
-        editor.putFloat("health", player.getHealth()).apply();
-        editor.putFloat("defense", player.getDefense()).apply();
-        editor.putFloat("damage", player.getDamage()).apply();
-        editor.putFloat("blockChance", player.getBlockChance()).apply();
-        editor.putFloat("critChance", player.getCritChance()).apply();
-        editor.putFloat("maxHealthGearBonus", player.getMaxHealthGearBonus()).apply();
-        editor.putFloat("defenseGearBonus", player.getDefenseGearBonus()).apply();
-        editor.putFloat("damageGearBonus", player.getDamageGearBonus()).apply();
+        preferences.edit().putBoolean("isCreated", isCreated).apply();
+        preferences.edit().putBoolean("alive", player.isAlive()).apply();
+        preferences.edit().putFloat("requiredLevelToAscend", player.getRequiredLevelToAscend()).apply();
+        preferences.edit().putFloat("level", player.getLevel()).apply();
+        preferences.edit().putFloat("XP", player.getXP()).apply();
+        preferences.edit().putFloat("XPToNextLevel", player.getXPToNextLevel()).apply();
+        preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+        preferences.edit().putFloat("glory", player.getGlory()).apply();
+        preferences.edit().putFloat("maxHealth", player.getMaxHealth()).apply();
+        preferences.edit().putFloat("baseHealth", player.getBaseHealth()).apply();
+        preferences.edit().putFloat("baseDefense", player.getBaseDefense()).apply();
+        preferences.edit().putFloat("baseDamage", player.getBaseDamage()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("defense", player.getDefense()).apply();
+        preferences.edit().putFloat("damage", player.getDamage()).apply();
+        preferences.edit().putFloat("blockChance", player.getBlockChance()).apply();
+        preferences.edit().putFloat("critChance", player.getCritChance()).apply();
+        preferences.edit().putFloat("maxHealthGearBonus", player.getMaxHealthGearBonus()).apply();
+        preferences.edit().putFloat("defenseGearBonus", player.getDefenseGearBonus()).apply();
+        preferences.edit().putFloat("damageGearBonus", player.getDamageGearBonus()).apply();
 
-        editor.putFloat("gold", player.getGold()).apply();
-        editor.putFloat("herbs", player.getHerbs()).apply();
-        editor.putFloat("ores", player.getOres()).apply();
+        preferences.edit().putFloat("gold", player.getGold()).apply();
+        preferences.edit().putFloat("herbs", player.getHerbs()).apply();
+        preferences.edit().putFloat("ores", player.getOres()).apply();
 
-        editor.putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
-        editor.putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
-        editor.putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
-        editor.putFloat("bonusXPYield", player.getBonusXPYield()).apply();
-        editor.putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
-        editor.putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
-        editor.putFloat("bonusOreYield", player.getBonusOreYield()).apply();
+        preferences.edit().putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
+        preferences.edit().putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
+        preferences.edit().putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
+        preferences.edit().putFloat("bonusXPYield", player.getBonusXPYield()).apply();
+        preferences.edit().putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
+        preferences.edit().putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
+        preferences.edit().putFloat("bonusOreYield", player.getBonusOreYield()).apply();
 
-        editor.putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
-        editor.putFloat("sprigganLevel", spriggan.getLevel()).apply();
-        editor.putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
-        editor.putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
-        editor.putFloat("sprigganHealth", spriggan.getHealth()).apply();
-        editor.putFloat("sprigganDamage", spriggan.getDamage()).apply();
-        editor.putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
-        editor.putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
+        preferences.edit().putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
+        preferences.edit().putFloat("sprigganLevel", spriggan.getLevel()).apply();
+        preferences.edit().putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
+        preferences.edit().putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
+        preferences.edit().putFloat("sprigganHealth", spriggan.getHealth()).apply();
+        preferences.edit().putFloat("sprigganDamage", spriggan.getDamage()).apply();
+        preferences.edit().putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
+        preferences.edit().putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
 
-        editor.putFloat("golemMaxLevel", golem.getMaxLevel()).apply();
-        editor.putFloat("golemLevel", golem.getLevel()).apply();
-        editor.putFloat("golemXPYield", golem.getXPYield()).apply();
-        editor.putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
-        editor.putFloat("golemHealth", golem.getHealth()).apply();
-        editor.putFloat("golemDamage", golem.getDamage()).apply();
-        editor.putFloat("golemGoldYield", golem.getGoldYield()).apply();
-        editor.putFloat("golemOreYield", golem.getOreYield()).apply();
+        preferences.edit().putFloat("golemMaxLevel", golem.getMaxLevel()).apply();
+        preferences.edit().putFloat("golemLevel", golem.getLevel()).apply();
+        preferences.edit().putFloat("golemXPYield", golem.getXPYield()).apply();
+        preferences.edit().putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
+        preferences.edit().putFloat("golemHealth", golem.getHealth()).apply();
+        preferences.edit().putFloat("golemDamage", golem.getDamage()).apply();
+        preferences.edit().putFloat("golemGoldYield", golem.getGoldYield()).apply();
+        preferences.edit().putFloat("golemOreYield", golem.getOreYield()).apply();
 
-        editor.putFloat("healthPotionLevel", healthPotion.getLevel()).apply();
-        editor.putFloat("healthPotionAmount", healthPotion.getAmount());
-        editor.putFloat("healthPotionUpgradeCost", healthPotion.getUpgradeCost()).apply();
-        editor.putFloat("healthPotionGoldCost", healthPotion.getGoldCost()).apply();
-        editor.putFloat("healthPotionGoldWorth", healthPotion.getGoldWorth()).apply();
-        editor.putFloat("healthPotionHerbsCost", healthPotion.getHerbCost()).apply();
-        editor.putFloat("healthPotionEffect", healthPotion.getEffect()).apply();
+        preferences.edit().putFloat("healthPotionLevel", healthPotion.getLevel()).apply();
+        preferences.edit().putFloat("healthPotionAmount", healthPotion.getAmount()).apply();
+        preferences.edit().putFloat("healthPotionUpgradeCost", healthPotion.getUpgradeCost()).apply();
+        preferences.edit().putFloat("healthPotionGoldCost", healthPotion.getGoldCost()).apply();
+        preferences.edit().putFloat("healthPotionGoldWorth", healthPotion.getGoldWorth()).apply();
+        preferences.edit().putFloat("healthPotionHerbsCost", healthPotion.getHerbCost()).apply();
+        preferences.edit().putFloat("healthPotionEffect", healthPotion.getEffect()).apply();
 
-        editor.putFloat("damagePotionLevel", damagePotion.getLevel()).apply();
-        editor.putFloat("damagePotionAmount", damagePotion.getAmount());
-        editor.putFloat("damagePotionUpgradeCost", damagePotion.getUpgradeCost()).apply();
-        editor.putFloat("damagePotionGoldCost", damagePotion.getGoldCost()).apply();
-        editor.putFloat("damagePotionGoldWorth", damagePotion.getGoldWorth()).apply();
-        editor.putFloat("damagePotionHerbsCost", damagePotion.getHerbCost()).apply();
-        editor.putFloat("damagePotionEffect", damagePotion.getEffect()).apply();
-        editor.putFloat("damagePotionDuration", damagePotion.getDuration()).apply();
-        editor.putFloat("damagePotionCooldown", damagePotion.getCooldown()).apply();
-        editor.putBoolean("damagePotionIsOnDurationCooldown", damagePotion.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("damagePotionLevel", damagePotion.getLevel()).apply();
+        preferences.edit().putFloat("damagePotionAmount", damagePotion.getAmount()).apply();
+        preferences.edit().putFloat("damagePotionUpgradeCost", damagePotion.getUpgradeCost()).apply();
+        preferences.edit().putFloat("damagePotionGoldCost", damagePotion.getGoldCost()).apply();
+        preferences.edit().putFloat("damagePotionGoldWorth", damagePotion.getGoldWorth()).apply();
+        preferences.edit().putFloat("damagePotionHerbsCost", damagePotion.getHerbCost()).apply();
+        preferences.edit().putFloat("damagePotionEffect", damagePotion.getEffect()).apply();
+        preferences.edit().putFloat("damagePotionDuration", damagePotion.getDuration()).apply();
+        preferences.edit().putFloat("damagePotionCooldown", damagePotion.getCooldown()).apply();
+        preferences.edit().putBoolean("damagePotionIsOnDurationCooldown", damagePotion.isOnDurationCooldown()).apply();
 
-        editor.putFloat("strikeLevel", strike.getLevel()).apply();
-        editor.putFloat("strikeDamage", strike.getDamage()).apply();
+        preferences.edit().putFloat("strikeLevel", strike.getLevel()).apply();
+        preferences.edit().putFloat("strikeDamage", strike.getDamage()).apply();
 
-        editor.putFloat("chargeLevel", charge.getLevel()).apply();
-        editor.putFloat("chargeDamage", charge.getDamage()).apply();
-        editor.putFloat("chargeDuration", charge.getDuration()).apply();
-        editor.putFloat("chargeCooldown", charge.getCooldown()).apply();
-        editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("chargeLevel", charge.getLevel()).apply();
+        preferences.edit().putFloat("chargeDamage", charge.getDamage()).apply();
+        preferences.edit().putFloat("chargeDuration", charge.getDuration()).apply();
+        preferences.edit().putFloat("chargeCooldown", charge.getCooldown()).apply();
+        preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
 
-        editor.putFloat("mendLevel", mend.getLevel()).apply();
-        editor.putFloat("mendHealing", mend.getHealing()).apply();
-        editor.putFloat("mendDuration", mend.getDuration()).apply();
-        editor.putFloat("mendCooldown", mend.getCooldown()).apply();
-        editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("mendLevel", mend.getLevel()).apply();
+        preferences.edit().putFloat("mendHealing", mend.getHealing()).apply();
+        preferences.edit().putFloat("mendDuration", mend.getDuration()).apply();
+        preferences.edit().putFloat("mendCooldown", mend.getCooldown()).apply();
+        preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
 
-        editor.putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
-        editor.putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
-        editor.putFloat("defenseUpDuration", defenseUp.getDuration()).apply();
-        editor.putFloat("defenseUpCooldown", defenseUp.getCooldown()).apply();
-        editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
+        preferences.edit().putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
+        preferences.edit().putFloat("defenseUpDuration", defenseUp.getDuration()).apply();
+        preferences.edit().putFloat("defenseUpCooldown", defenseUp.getCooldown()).apply();
+        preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
 
-        editor.putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
-        editor.putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
-        editor.putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
-        editor.putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
-        editor.putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
-        editor.putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
-        editor.putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
+        preferences.edit().putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
+        preferences.edit().putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
+        preferences.edit().putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
+        preferences.edit().putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
+        preferences.edit().putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
+        preferences.edit().putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
+        preferences.edit().putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
 
-        editor.putFloat("monstersRequiredLevel", 2).apply();
+        preferences.edit().putFloat("monstersRequiredLevel", 2).apply();
 
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -357,10 +360,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    public void onBackPressed()
-    {
+
+    public void onBackPressed() {
         finishAffinity();
     }
+
     public void cancel(View view) {
         newGame.setVisibility(View.VISIBLE);
         start.setVisibility(View.VISIBLE);
@@ -369,12 +373,13 @@ public class MainActivity extends AppCompatActivity {
         areYouSureOkay.setVisibility(View.INVISIBLE);
         areYouSureCancel.setVisibility(View.INVISIBLE);
     }
-    public void quit(View view)
-    {
-        finishAffinity();
-    }
+
     public void settings(View view) {
         intent = new Intent(this, Settings.class);
         startActivity(intent);
+    }
+
+    public void quit(View view) {
+        finishAffinity();
     }
 }

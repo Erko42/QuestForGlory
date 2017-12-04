@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.erik.questforglory.R;
 
 public class Settings extends AppCompatActivity {
+
     Intent intent;
 
     @Override

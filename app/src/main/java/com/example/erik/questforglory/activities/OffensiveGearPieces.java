@@ -16,9 +16,9 @@ import com.example.erik.questforglory.helpers.DatabaseHelper;
 import com.example.erik.questforglory.R;
 
 public class OffensiveGearPieces extends AppCompatActivity {
+    
     DatabaseHelper db;
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     Intent intent;
     Bundle bundle;
     Player player;
@@ -82,7 +82,6 @@ public class OffensiveGearPieces extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
@@ -96,26 +95,26 @@ public class OffensiveGearPieces extends AppCompatActivity {
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
         gearPieceType = getIntent().getStringExtra("gearPieceType");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        ores = (TextView) findViewById(R.id.ores);
-        gold = (TextView) findViewById(R.id.gold);
-        gearPieces = (TextView) findViewById(R.id.gearPieces);
-        commonGearPiece = (TextView) findViewById(R.id.commonGearPiece);
-        commonGearPieceBuy = (TextView) findViewById(R.id.commonGearPieceBuy);
-        commonGearPieceCraft = (TextView) findViewById(R.id.commonGearPieceCraft);
-        uncommonGearPiece = (TextView) findViewById(R.id.uncommonGearPiece);
-        uncommonGearPieceBuy = (TextView) findViewById(R.id.uncommonGearPieceBuy);
-        uncommonGearPieceCraft = (TextView) findViewById(R.id.uncommonGearPieceCraft);
-        rareGearPiece = (TextView) findViewById(R.id.rareGearPiece);
-        rareGearPieceBuy = (TextView) findViewById(R.id.rareGearPieceBuy);
-        rareGearPieceCraft = (TextView) findViewById(R.id.rareGearPieceCraft);
-        epicGearPiece = (TextView) findViewById(R.id.epicGearPiece);
-        epicGearPieceBuy = (TextView) findViewById(R.id.epicGearPieceBuy);
-        epicGearPieceCraft = (TextView) findViewById(R.id.epicGearPieceCraft);
-        legendaryGearPiece = (TextView) findViewById(R.id.legendaryGearPiece);
-        legendaryGearPieceBuy = (TextView) findViewById(R.id.legendaryGearPieceBuy);
-        legendaryGearPieceCraft = (TextView) findViewById(R.id.legendaryGearPieceCraft);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        ores = findViewById(R.id.ores);
+        gold = findViewById(R.id.gold);
+        gearPieces = findViewById(R.id.gearPieces);
+        commonGearPiece = findViewById(R.id.commonGearPiece);
+        commonGearPieceBuy = findViewById(R.id.commonGearPieceBuy);
+        commonGearPieceCraft = findViewById(R.id.commonGearPieceCraft);
+        uncommonGearPiece = findViewById(R.id.uncommonGearPiece);
+        uncommonGearPieceBuy = findViewById(R.id.uncommonGearPieceBuy);
+        uncommonGearPieceCraft = findViewById(R.id.uncommonGearPieceCraft);
+        rareGearPiece = findViewById(R.id.rareGearPiece);
+        rareGearPieceBuy = findViewById(R.id.rareGearPieceBuy);
+        rareGearPieceCraft = findViewById(R.id.rareGearPieceCraft);
+        epicGearPiece = findViewById(R.id.epicGearPiece);
+        epicGearPieceBuy = findViewById(R.id.epicGearPieceBuy);
+        epicGearPieceCraft = findViewById(R.id.epicGearPieceCraft);
+        legendaryGearPiece = findViewById(R.id.legendaryGearPiece);
+        legendaryGearPieceBuy = findViewById(R.id.legendaryGearPieceBuy);
+        legendaryGearPieceCraft = findViewById(R.id.legendaryGearPieceCraft);
 
         levelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -137,35 +136,37 @@ public class OffensiveGearPieces extends AppCompatActivity {
         legendaryGearPieceBuyText = "Buy for\n" + Math.round(gearPiece.getGoldCost() * 5) + " Gold";
         legendaryGearPieceCraftText = "Craft for\n" + Math.round(gearPiece.getOreCost() * 5) + " Ores";
 
-        if(gearPieceType.equals("Helm")) {
-            gearPiecesText = "Helms";
-        }
-        else if(gearPieceType.equals("Pauldrons")) {
-            gearPiecesText = "Pauldrons";
-        }
-        else if(gearPieceType.equals("Chestplate")) {
-            gearPiecesText = "Chestplates";
-        }
-        else if(gearPieceType.equals("Bracers")) {
-            gearPiecesText = "Bracers";
-        }
-        else if(gearPieceType.equals("MainHand Sword")) {
-            gearPiecesText = "MainHand Swords";
-        }
-        else if(gearPieceType.equals("OffHand Sword")) {
-            gearPiecesText = "OffHand Swords";
-        }
-        else if(gearPieceType.equals("Gauntlets")) {
-            gearPiecesText = "Gauntlets";
-        }
-        else if(gearPieceType.equals("Belt")) {
-            gearPiecesText = "Belts";
-        }
-        else if(gearPieceType.equals("Legplates")) {
-            gearPiecesText = "Legplates";
-        }
-        else if(gearPieceType.equals("Sabatons")) {
-            gearPiecesText = "Sabatons";
+        switch (gearPieceType) {
+            case "Helm":
+                gearPiecesText = "Helms";
+                break;
+            case "Pauldrons":
+                gearPiecesText = "Pauldrons";
+                break;
+            case "Chestplate":
+                gearPiecesText = "Chestplates";
+                break;
+            case "Bracers":
+                gearPiecesText = "Bracers";
+                break;
+            case "MainHand Sword":
+                gearPiecesText = "MainHand Swords";
+                break;
+            case "OffHand Sword":
+                gearPiecesText = "OffHand Swords";
+                break;
+            case "Gauntlets":
+                gearPiecesText = "Gauntlets";
+                break;
+            case "Belt":
+                gearPiecesText = "Belts";
+                break;
+            case "Legplates":
+                gearPiecesText = "Legplates";
+                break;
+            case "Sabatons":
+                gearPiecesText = "Sabatons";
+                break;
         }
         gearPieces.setText(gearPiecesText);
 
@@ -189,8 +190,9 @@ public class OffensiveGearPieces extends AppCompatActivity {
         legendaryGearPieceBuy.setText(legendaryGearPieceBuyText);
         legendaryGearPieceCraft.setText(legendaryGearPieceCraftText);
     }
+
     public void increaseGearPieceLevel(View view) {
-        if(gearPiece.getLevel() < player.getLevel()) {
+        if (gearPiece.getLevel() < player.getLevel()) {
             gearPiece.levelUp();
 
             commonGearPieceText = "Level " + Math.round(gearPiece.getLevel()) + " Common\n" + gearPieceType;
@@ -225,17 +227,18 @@ public class OffensiveGearPieces extends AppCompatActivity {
             legendaryGearPieceBuy.setText(legendaryGearPieceBuyText);
             legendaryGearPieceCraft.setText(legendaryGearPieceCraftText);
 
-            editor.putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
-            editor.putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
-            editor.putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
-            editor.putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
-            editor.putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
-            editor.putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
-            editor.putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
+            preferences.edit().putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
+            preferences.edit().putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
+            preferences.edit().putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
+            preferences.edit().putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
+            preferences.edit().putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
+            preferences.edit().putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
+            preferences.edit().putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
         }
     }
+
     public void decreaseGearPieceLevel(View view) {
-        if(gearPiece.getLevel() > 1) {
+        if (gearPiece.getLevel() > 1) {
             gearPiece.levelDown();
 
             commonGearPieceText = "Level " + Math.round(gearPiece.getLevel()) + " Common\n" + gearPieceType;
@@ -270,18 +273,19 @@ public class OffensiveGearPieces extends AppCompatActivity {
             legendaryGearPieceBuy.setText(legendaryGearPieceBuyText);
             legendaryGearPieceCraft.setText(legendaryGearPieceCraftText);
 
-            editor.putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
-            editor.putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
-            editor.putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
-            editor.putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
-            editor.putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
-            editor.putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
-            editor.putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
+            preferences.edit().putFloat("gearPieceLevel", gearPiece.getLevel()).apply();
+            preferences.edit().putFloat("gearPieceHealth", gearPiece.getHealth()).apply();
+            preferences.edit().putFloat("gearPieceDefense", gearPiece.getDefense()).apply();
+            preferences.edit().putFloat("gearPieceDamage", gearPiece.getDamage()).apply();
+            preferences.edit().putFloat("gearPieceGoldCost", gearPiece.getGoldCost()).apply();
+            preferences.edit().putFloat("gearPieceGoldWorth", gearPiece.getGoldWorth()).apply();
+            preferences.edit().putFloat("gearPieceOreCost", gearPiece.getOreCost()).apply();
         }
     }
+
     public void craftCommonGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost())) {
-            if(gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost())) {
+            if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
                         gearPieceType,
@@ -331,12 +335,13 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
         }
     }
+
     public void buyCommonGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost())) {
-            if(gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost())) {
+            if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
                         gearPieceType,
@@ -386,12 +391,13 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void craftUncommonGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 2)) {
-            if(gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 2)) {
+            if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
                         gearPieceType,
@@ -441,11 +447,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
         }
     }
+
     public void buyUncommonGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 2)) {
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 2)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -496,11 +503,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void craftRareGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 3)) {
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 3)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -551,11 +559,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
         }
     }
+
     public void buyRareGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 3)) {
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 3)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -606,11 +615,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void craftEpicGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 4)) {
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 4)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -662,11 +672,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
 
-            editor.putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
         }
     }
+
     public void buyEpicGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 4)) {
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 4)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -717,11 +728,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void craftLegendaryGearPiece(View view) {
-        if(Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 5)) {
+        if (Math.round(player.getOres()) >= Math.round(gearPiece.getOreCost() * 5)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -772,11 +784,12 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
         }
     }
+
     public void buyLegendaryGearPiece(View view) {
-        if(Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 5)) {
+        if (Math.round(player.getGold()) >= Math.round(gearPiece.getGoldCost() * 5)) {
             if (gearPieceType.equals("MainHand Sword") || gearPieceType.equals("OffHand Sword")) {
                 theGearPiece = new GearPiece(
                         gearPiece.getIsEquiped(),
@@ -827,9 +840,10 @@ public class OffensiveGearPieces extends AppCompatActivity {
                     theGearPiece.getBlockChance(),
                     theGearPiece.getCritChance(),
                     theGearPiece.getGoldWorth());
-            editor.putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -845,30 +859,37 @@ public class OffensiveGearPieces extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, OffensiveGear.class);
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

@@ -277,6 +277,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
         android:gravity="center"
+        android:onClick="theRuin"
         app:layout_constraintVertical_weight="13"
         app:layout_constraintHorizontal_weight="58"
         app:layout_constraintBottom_toTopOf="@+id/kingdom"

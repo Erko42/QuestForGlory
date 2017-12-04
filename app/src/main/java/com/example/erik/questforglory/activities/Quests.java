@@ -18,8 +18,8 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class Quests extends AppCompatActivity {
+    
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     InterstitialAd mInterstitialAd;
     Intent intent;
     Bundle bundle;
@@ -53,16 +53,13 @@ public class Quests extends AppCompatActivity {
         setContentView(R.layout.activity_quests);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-6115526968446578/1787476245");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener()
-        {
+        mInterstitialAd.setAdListener(new AdListener() {
             @Override
-            public void onAdClosed()
-            {
+            public void onAdClosed() {
                 saveObjectsInBundle();
             }
         });
@@ -79,12 +76,12 @@ public class Quests extends AppCompatActivity {
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
         monstersRequiredLevel = preferences.getFloat("monstersRequiredLevel", 0);
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        theQuest = (TextView) findViewById(R.id.theQuest);
-        theForest = (TextView) findViewById(R.id.theForest);
-        theMountain = (TextView) findViewById(R.id.theMountain);
-        theRuin = (TextView) findViewById(R.id.theRuin);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        theQuest = findViewById(R.id.theQuest);
+        theForest = findViewById(R.id.theForest);
+        theMountain = findViewById(R.id.theMountain);
+        theRuin = findViewById(R.id.theRuin);
 
         levelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -100,14 +97,15 @@ public class Quests extends AppCompatActivity {
         theMountain.setText(theMountainText);
         theRuin.setText(theRuinText);
 
-        if(spriggan.getMaxLevel() >= preferences.getFloat("monstersRequiredLevel", 0) && golem.getMaxLevel() >= preferences.getFloat("monstersRequiredLevel", 0)) {
+        if (spriggan.getMaxLevel() >= preferences.getFloat("monstersRequiredLevel", 0) && golem.getMaxLevel() >= preferences.getFloat("monstersRequiredLevel", 0)) {
             player.increaseGlory(1);
             monstersRequiredLevel += 1;
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("monstersRequiredLevel", monstersRequiredLevel).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("monstersRequiredLevel", monstersRequiredLevel).apply();
         }
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -123,12 +121,14 @@ public class Quests extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         saveObjectsInBundle();
     }
+
     public void increaseTheForestLevel(View view) {
-        if(spriggan.getLevel() < spriggan.getMaxLevel()) {
+        if (spriggan.getLevel() < spriggan.getMaxLevel()) {
             spriggan.levelUp();
             charge.refresh();
             charge.setOnDurationCooldown(false);
@@ -140,29 +140,30 @@ public class Quests extends AppCompatActivity {
             theForestText = "The Forest\nLevel " + Math.round(spriggan.getLevel());
             theForest.setText(theForestText);
 
-            editor.putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
-            editor.putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
-            editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
+            preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
 
-            editor.putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
-            editor.putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
+            preferences.edit().putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
 
-            editor.putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
-            editor.putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
-            editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
+            preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
 
-            editor.putFloat("sprigganLevel", spriggan.getLevel()).apply();
-            editor.putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
-            editor.putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
-            editor.putFloat("sprigganHealth", spriggan.getHealth()).apply();
-            editor.putFloat("sprigganDamage", spriggan.getDamage()).apply();
-            editor.putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
-            editor.putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
+            preferences.edit().putFloat("sprigganLevel", spriggan.getLevel()).apply();
+            preferences.edit().putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
+            preferences.edit().putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
+            preferences.edit().putFloat("sprigganHealth", spriggan.getHealth()).apply();
+            preferences.edit().putFloat("sprigganDamage", spriggan.getDamage()).apply();
+            preferences.edit().putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
+            preferences.edit().putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
         }
     }
+
     public void decreaseTheForestLevel(View view) {
-        if(spriggan.getLevel() > 1) {
+        if (spriggan.getLevel() > 1) {
             spriggan.levelDown();
             charge.refresh();
             charge.setOnDurationCooldown(false);
@@ -174,30 +175,31 @@ public class Quests extends AppCompatActivity {
             theForestText = "The Forest\nLevel " + Math.round(spriggan.getLevel());
             theForest.setText(theForestText);
 
-            editor.putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
-            editor.putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
-            editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
+            preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
 
-            editor.putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
-            editor.putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
+            preferences.edit().putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
 
-            editor.putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
-            editor.putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
-            editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
+            preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
 
-            editor.putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
-            editor.putFloat("sprigganLevel", spriggan.getLevel()).apply();
-            editor.putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
-            editor.putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
-            editor.putFloat("sprigganHealth", spriggan.getHealth()).apply();
-            editor.putFloat("sprigganDamage", spriggan.getDamage()).apply();
-            editor.putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
-            editor.putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
+            preferences.edit().putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
+            preferences.edit().putFloat("sprigganLevel", spriggan.getLevel()).apply();
+            preferences.edit().putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
+            preferences.edit().putFloat("sprigganMaxHealth", spriggan.getMaxHealth()).apply();
+            preferences.edit().putFloat("sprigganHealth", spriggan.getHealth()).apply();
+            preferences.edit().putFloat("sprigganDamage", spriggan.getDamage()).apply();
+            preferences.edit().putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
+            preferences.edit().putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
         }
     }
+
     public void increaseTheMountainLevel(View view) {
-        if(golem.getLevel() < golem.getMaxLevel()) {
+        if (golem.getLevel() < golem.getMaxLevel()) {
             golem.levelUp();
             charge.refresh();
             charge.setOnDurationCooldown(false);
@@ -209,29 +211,30 @@ public class Quests extends AppCompatActivity {
             theMountainText = "The Mountain\nLevel " + Math.round(golem.getLevel());
             theMountain.setText(theMountainText);
 
-            editor.putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
-            editor.putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
-            editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
+            preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
 
-            editor.putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
-            editor.putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
+            preferences.edit().putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
 
-            editor.putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
-            editor.putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
-            editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
+            preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
 
-            editor.putFloat("golemLevel", golem.getLevel()).apply();
-            editor.putFloat("golemXPYield", golem.getXPYield()).apply();
-            editor.putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
-            editor.putFloat("golemHealth", golem.getHealth()).apply();
-            editor.putFloat("golemDamage", golem.getDamage()).apply();
-            editor.putFloat("golemGoldYield", golem.getGoldYield()).apply();
-            editor.putFloat("golemOreYield", golem.getOreYield()).apply();
+            preferences.edit().putFloat("golemLevel", golem.getLevel()).apply();
+            preferences.edit().putFloat("golemXPYield", golem.getXPYield()).apply();
+            preferences.edit().putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
+            preferences.edit().putFloat("golemHealth", golem.getHealth()).apply();
+            preferences.edit().putFloat("golemDamage", golem.getDamage()).apply();
+            preferences.edit().putFloat("golemGoldYield", golem.getGoldYield()).apply();
+            preferences.edit().putFloat("golemOreYield", golem.getOreYield()).apply();
         }
     }
+
     public void decreaseTheMountainLevel(View view) {
-        if(golem.getLevel() > 1) {
+        if (golem.getLevel() > 1) {
             golem.levelDown();
             charge.refresh();
             charge.setOnDurationCooldown(false);
@@ -243,27 +246,28 @@ public class Quests extends AppCompatActivity {
             theMountainText = "The Mountain\nLevel " + Math.round(golem.getLevel());
             theMountain.setText(theMountainText);
 
-            editor.putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
-            editor.putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
-            editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
+            preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
 
-            editor.putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
-            editor.putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
+            preferences.edit().putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
 
-            editor.putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
-            editor.putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
-            editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
+            preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
 
-            editor.putFloat("golemLevel", golem.getLevel()).apply();
-            editor.putFloat("golemXPYield", golem.getXPYield()).apply();
-            editor.putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
-            editor.putFloat("golemHealth", golem.getHealth()).apply();
-            editor.putFloat("golemDamage", golem.getDamage()).apply();
-            editor.putFloat("golemGoldYield", golem.getGoldYield()).apply();
-            editor.putFloat("golemOreYield", golem.getOreYield()).apply();
+            preferences.edit().putFloat("golemLevel", golem.getLevel()).apply();
+            preferences.edit().putFloat("golemXPYield", golem.getXPYield()).apply();
+            preferences.edit().putFloat("golemMaxHealth", golem.getMaxHealth()).apply();
+            preferences.edit().putFloat("golemHealth", golem.getHealth()).apply();
+            preferences.edit().putFloat("golemDamage", golem.getDamage()).apply();
+            preferences.edit().putFloat("golemGoldYield", golem.getGoldYield()).apply();
+            preferences.edit().putFloat("golemOreYield", golem.getOreYield()).apply();
         }
     }
+
     public void theForest(View view) {
 //        if (mInterstitialAd.isLoaded()) {
 //            mInterstitialAd.show();
@@ -271,30 +275,37 @@ public class Quests extends AppCompatActivity {
         intent = new Intent(this, TheForest.class);
         saveObjectsInBundle();
     }
+
     public void theMountain(View view) {
         intent = new Intent(this, TheMountain.class);
         saveObjectsInBundle();
     }
+
     public void theRuin(View view) {
         intent = new Intent(this, TheRuin.class);
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();

@@ -12,6 +12,7 @@ import com.example.erik.questforglory.classes.Potion;
 import com.example.erik.questforglory.R;
 
 public class Enchanting extends AppCompatActivity {
+
     Intent intent;
     Bundle bundle;
     Player player;
@@ -37,10 +38,10 @@ public class Enchanting extends AppCompatActivity {
         golem = (Monster) getIntent().getSerializableExtra("golem");
         healthPotion = (Potion) getIntent().getSerializableExtra("healthPotion");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        herbs = (TextView) findViewById(R.id.herbs);
-        gold = (TextView) findViewById(R.id.gold);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        herbs = findViewById(R.id.herbs);
+        gold = findViewById(R.id.gold);
 
         levelText = "Level " + (int) player.getLevel();
         XPText = "XP " + (int) player.getXP() + " / " + (int) player.getXPToNextLevel();

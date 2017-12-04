@@ -23,9 +23,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class TheForest extends AppCompatActivity {
+    
     DatabaseHelper db;
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     Intent intent;
     Bundle bundle;
     Player player;
@@ -92,7 +92,6 @@ public class TheForest extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
@@ -125,28 +124,28 @@ public class TheForest extends AppCompatActivity {
         gearPieceRarity.add("epic");
         gearPieceRarity.add("legendary");
 
-        playerHealth = (TextView) findViewById(R.id.playerHealth);
-        sprigganHealth = (TextView) findViewById(R.id.sprigganHealth);
-        healthPotionAmount = (TextView) findViewById(R.id.healthPotionAmount);
-        damagePotionAmount = (TextView) findViewById(R.id.damagePotionAmount);
-        damagePotionDurationCooldown = (TextView) findViewById(R.id.damagePotionDurationCooldown);
-        healthPotionDurationCooldown = (TextView) findViewById(R.id.healthPotionDurationCooldown);
-        youAreDeadGrid = (TextView) findViewById(R.id.youAreDeadGrid);
-        youAreDead = (TextView) findViewById(R.id.youAreDead);
-        accept = (TextView) findViewById(R.id.accept);
-        sprigganDefeatedGrid = (TextView) findViewById(R.id.sprigganDefeatedGrid);
-        sprigganDefeated = (TextView) findViewById(R.id.sprigganDefeated);
-        gearPieceRewardView = (TextView) findViewById(R.id.gearPieceRewardView);
-        home = (TextView) findViewById(R.id.home);
-        Continue = (TextView) findViewById(R.id.Continue);
-        chargeDurationCooldown = (TextView) findViewById(R.id.chargeDurationCooldown);
-        mendDurationCooldown = (TextView) findViewById(R.id.mendDurationCooldown);
-        defenseUpDurationCooldown = (TextView) findViewById(R.id.defenseUpDurationCooldown);
-        damagePotionImage = (ImageView) findViewById(R.id.damagePotion);
-        healthPotionImage = (ImageView) findViewById(R.id.healthPotion);
-        chargeImage = (ImageView) findViewById(R.id.charge);
-        mendImage = (ImageView) findViewById(R.id.mend);
-        defenseUpImage = (ImageView) findViewById(R.id.defenseUp);
+        playerHealth = findViewById(R.id.playerHealth);
+        sprigganHealth = findViewById(R.id.sprigganHealth);
+        healthPotionAmount = findViewById(R.id.healthPotionAmount);
+        damagePotionAmount = findViewById(R.id.damagePotionAmount);
+        damagePotionDurationCooldown = findViewById(R.id.damagePotionDurationCooldown);
+        healthPotionDurationCooldown = findViewById(R.id.healthPotionDurationCooldown);
+        youAreDeadGrid = findViewById(R.id.youAreDeadGrid);
+        youAreDead = findViewById(R.id.youAreDead);
+        accept = findViewById(R.id.accept);
+        sprigganDefeatedGrid = findViewById(R.id.sprigganDefeatedGrid);
+        sprigganDefeated = findViewById(R.id.sprigganDefeated);
+        gearPieceRewardView = findViewById(R.id.gearPieceRewardView);
+        home = findViewById(R.id.home);
+        Continue = findViewById(R.id.Continue);
+        chargeDurationCooldown = findViewById(R.id.chargeDurationCooldown);
+        mendDurationCooldown = findViewById(R.id.mendDurationCooldown);
+        defenseUpDurationCooldown = findViewById(R.id.defenseUpDurationCooldown);
+        damagePotionImage = findViewById(R.id.damagePotion);
+        healthPotionImage = findViewById(R.id.healthPotion);
+        chargeImage = findViewById(R.id.charge);
+        mendImage = findViewById(R.id.mend);
+        defenseUpImage = findViewById(R.id.defenseUp);
 
         playerHealthText = "  Health: " + Math.round(player.getHealth()) + " / " + Math.round(player.getMaxHealth()) + "  ";
         sprigganHealthText = "  Health: " + Math.round(spriggan.getHealth()) + " / " + Math.round(spriggan.getMaxHealth()) + "  ";
@@ -290,8 +289,8 @@ public class TheForest extends AppCompatActivity {
         playerHealth.setText(playerHealthText);
         player.decreaseGold(Math.round(player.getXPToNextLevel()) / 2);
 
-        editor.putFloat("gold", player.getGold()).apply();
-        editor.putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("gold", player.getGold()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
 
         newBattle();
     }
@@ -559,7 +558,7 @@ public class TheForest extends AppCompatActivity {
             }
             if(spriggan.getLevel() == spriggan.getMaxLevel()) {
                 spriggan.increaseMaxLevel();
-                editor.putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
+                preferences.edit().putFloat("sprigganMaxLevel", spriggan.getMaxLevel()).apply();
             }
             player.setBattleDamage(player.getDamage());
             player.setBattleDefense(player.getDefense());
@@ -589,20 +588,20 @@ public class TheForest extends AppCompatActivity {
             healthPotion.setOnDurationCooldown(false);
             healthPotion.refresh();
 
-            editor.putFloat("level", player.getLevel()).apply();
-            editor.putFloat("XP", player.getXP()).apply();
-            editor.putFloat("XPToNextLevel", player.getXPToNextLevel()).apply();
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("maxHealth", player.getMaxHealth()).apply();
-            editor.putFloat("health", player.getHealth()).apply();
-            editor.putFloat("defense", player.getDefense()).apply();
-            editor.putFloat("damage", player.getDamage()).apply();
-            editor.putFloat("critChance", player.getCritChance()).apply();
-            editor.putFloat("gold", player.getGold()).apply();
-            editor.putFloat("herbs", player.getHerbs()).apply();
-            editor.putFloat("ores", player.getOres()).apply();
-            editor.putFloat("soulDust", player.getSoulDust()).apply();
+            preferences.edit().putFloat("level", player.getLevel()).apply();
+            preferences.edit().putFloat("XP", player.getXP()).apply();
+            preferences.edit().putFloat("XPToNextLevel", player.getXPToNextLevel()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("maxHealth", player.getMaxHealth()).apply();
+            preferences.edit().putFloat("health", player.getHealth()).apply();
+            preferences.edit().putFloat("defense", player.getDefense()).apply();
+            preferences.edit().putFloat("damage", player.getDamage()).apply();
+            preferences.edit().putFloat("critChance", player.getCritChance()).apply();
+            preferences.edit().putFloat("gold", player.getGold()).apply();
+            preferences.edit().putFloat("herbs", player.getHerbs()).apply();
+            preferences.edit().putFloat("ores", player.getOres()).apply();
+            preferences.edit().putFloat("soulDust", player.getSoulDust()).apply();
         }
     }
     public void home(View view) {
@@ -635,7 +634,7 @@ public class TheForest extends AppCompatActivity {
             player.takeDamage(spriggan.getDamage() - player.getBattleDefense());
             playerHealthText = "  Health: " + Math.round(player.getHealth()) + " / " + Math.round(player.getMaxHealth()) + "  ";
             playerHealth.setText(playerHealthText);
-            editor.putFloat("health", player.getHealth()).apply();
+            preferences.edit().putFloat("health", player.getHealth()).apply();
         }
         if(player.isAlive() && spriggan.isAlive() && chargeDurationCooldown.getVisibility() == View.VISIBLE) {
             if(charge.getCurrentDuration() < 1 && player.isAlive() && spriggan.isAlive()) {
@@ -665,10 +664,10 @@ public class TheForest extends AppCompatActivity {
                 charge.refresh();
             }
         }
-        editor.putFloat("health", player.getHealth()).apply();
-        editor.putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
-        editor.putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
-        editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("chargeCurrentDuration", charge.getCurrentDuration()).apply();
+        preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
+        preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
     }
     public void checkMend() {
         if(mendDurationCooldown.getVisibility() == View.VISIBLE) {
@@ -696,10 +695,10 @@ public class TheForest extends AppCompatActivity {
                 mend.setOnDurationCooldown(false);
                 mend.refresh();
             }
-            editor.putFloat("health", player.getHealth()).apply();
-            editor.putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
-            editor.putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("health", player.getHealth()).apply();
+            preferences.edit().putFloat("mendCurrentDuration", mend.getCurrentDuration()).apply();
+            preferences.edit().putFloat("mendCurrentCooldown", mend.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
         }
     }
     public void checkDefenseUp() {
@@ -727,10 +726,10 @@ public class TheForest extends AppCompatActivity {
                 defenseUp.refresh();
             }
         }
-        editor.putFloat("health", player.getHealth()).apply();
-        editor.putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
-        editor.putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
-        editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("defenseUpCurrentDuration", defenseUp.getCurrentDuration()).apply();
+        preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
+        preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
     }
     public void useStrike(View view) {
         if (player.isAlive() && spriggan.isAlive()) {
@@ -744,7 +743,7 @@ public class TheForest extends AppCompatActivity {
             checkCharge();
             checkMend();
             checkPlayer();
-            editor.putFloat("sprigganHealth", spriggan.getHealth()).apply();
+            preferences.edit().putFloat("sprigganHealth", spriggan.getHealth()).apply();
         }
     }
     public void useCharge(View view) {
@@ -762,8 +761,8 @@ public class TheForest extends AppCompatActivity {
             checkCharge();
             checkMend();
             checkPlayer();
-            editor.putFloat("sprigganHealth", spriggan.getHealth()).apply();
-            editor.putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("sprigganHealth", spriggan.getHealth()).apply();
+            preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
         }
     }
     public void useMend(View view) {
@@ -778,7 +777,7 @@ public class TheForest extends AppCompatActivity {
             checkCharge();
             checkMend();
             checkPlayer();
-            editor.putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
+            preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
         }
     }
     public void useDefenseUp(View view) {
@@ -793,7 +792,7 @@ public class TheForest extends AppCompatActivity {
             checkCharge();
             checkMend();
             checkPlayer();
-            editor.putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
+            preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
         }
     }
     public void useHealthPotion(View view) {
@@ -815,11 +814,11 @@ public class TheForest extends AppCompatActivity {
             healthPotionAmount.setText(healthPotionAmountText);
             healthPotionDurationCooldown.setText(healthPotionDurationCooldownText);
 
-            editor.putFloat("health", player.getHealth()).apply();
-            editor.putFloat("healthPotionAmount", healthPotion.getAmount()).apply();
-            editor.putFloat("healthPotionDuration", charge.getDuration()).apply();
-            editor.putFloat("healthPotionCooldown", charge.getCooldown()).apply();
-            editor.putBoolean("healthPotionIsOnDurationCooldown", healthPotion.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("health", player.getHealth()).apply();
+            preferences.edit().putFloat("healthPotionAmount", healthPotion.getAmount()).apply();
+            preferences.edit().putFloat("healthPotionDuration", charge.getDuration()).apply();
+            preferences.edit().putFloat("healthPotionCooldown", charge.getCooldown()).apply();
+            preferences.edit().putBoolean("healthPotionIsOnDurationCooldown", healthPotion.isOnDurationCooldown()).apply();
         }
     }
     public void useDamagePotion(View view) {
@@ -836,10 +835,10 @@ public class TheForest extends AppCompatActivity {
             damagePotionAmount.setText(damagePotionAmountText);
             damagePotionDurationCooldown.setText(damagePotionDurationCooldownText);
 
-            editor.putFloat("damagePotionAmount", damagePotion.getAmount()).apply();
-            editor.putFloat("damagePotionCurrentDuration", charge.getCurrentDuration()).apply();
-            editor.putFloat("damagePotionCurrentCooldown", charge.getCurrentCooldown()).apply();
-            editor.putBoolean("damagePotionIsOnDurationCooldown", damagePotion.isOnDurationCooldown()).apply();
+            preferences.edit().putFloat("damagePotionAmount", damagePotion.getAmount()).apply();
+            preferences.edit().putFloat("damagePotionCurrentDuration", charge.getCurrentDuration()).apply();
+            preferences.edit().putFloat("damagePotionCurrentCooldown", charge.getCurrentCooldown()).apply();
+            preferences.edit().putBoolean("damagePotionIsOnDurationCooldown", damagePotion.isOnDurationCooldown()).apply();
         }
     }
     public void newBattle() {

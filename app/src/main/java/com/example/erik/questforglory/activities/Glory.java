@@ -16,8 +16,8 @@ import com.example.erik.questforglory.classes.Skill;
 import com.example.erik.questforglory.R;
 
 public class Glory extends AppCompatActivity {
+    
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     Intent intent;
     Bundle bundle;
     Player player;
@@ -57,7 +57,6 @@ public class Glory extends AppCompatActivity {
         setContentView(R.layout.activity_glory);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
@@ -70,16 +69,16 @@ public class Glory extends AppCompatActivity {
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        glory = (TextView) findViewById(R.id.gloryAmount);
-        bonusBaseHealth = (TextView) findViewById(R.id.bonusBaseHealth);
-        bonusBaseDefense = (TextView) findViewById(R.id.bonusBaseDefense);
-        bonusBaseDamage = (TextView) findViewById(R.id.bonusBaseDamage);
-        bonusXPYield = (TextView) findViewById(R.id.bonusXP);
-        bonusGoldYield = (TextView) findViewById(R.id.bonusGold);
-        bonusHerbsYield = (TextView) findViewById(R.id.bonusHerbs);
-        bonusOreYield = (TextView) findViewById(R.id.bonusOres);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        glory = findViewById(R.id.gloryAmount);
+        bonusBaseHealth = findViewById(R.id.bonusBaseHealth);
+        bonusBaseDefense = findViewById(R.id.bonusBaseDefense);
+        bonusBaseDamage = findViewById(R.id.bonusBaseDamage);
+        bonusXPYield = findViewById(R.id.bonusXP);
+        bonusGoldYield = findViewById(R.id.bonusGold);
+        bonusHerbsYield = findViewById(R.id.bonusHerbs);
+        bonusOreYield = findViewById(R.id.bonusOres);
 
         LevelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -103,6 +102,7 @@ public class Glory extends AppCompatActivity {
         bonusHerbsYield.setText(bonusHerbYieldText);
         bonusOreYield.setText(bonusOreYieldText);
     }
+
     public void resetGlory(View view) {
         player.increaseGlory((player.getBonusBaseHealth() + player.getBonusBaseDefense() + player.getBonusBaseDamage() + player.getBonusXPYield() + player.getBonusGoldYield() + player.getBonusHerbYield() + player.getBonusOreYield()) / 5);
 
@@ -159,31 +159,31 @@ public class Glory extends AppCompatActivity {
         bonusHerbsYield.setText(bonusHerbYieldText);
         bonusOreYield.setText(bonusOreYieldText);
 
-        editor.putFloat("glory", player.getGlory()).apply();
-        editor.putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
-        editor.putFloat("baseHealth", player.getBaseHealth()).apply();
-        editor.putFloat("maxHealth", player.getMaxHealth()).apply();
-        editor.putFloat("health", player.getHealth()).apply();
-        editor.putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
-        editor.putFloat("baseDefense", player.getBaseDefense()).apply();
-        editor.putFloat("defense", player.getDefense()).apply();
-        editor.putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
-        editor.putFloat("baseDamage", player.getBaseDamage()).apply();
-        editor.putFloat("damage", player.getDamage()).apply();
-        editor.putFloat("bonusXPYield", player.getBonusXPYield()).apply();
-        editor.putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
-        editor.putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
-        editor.putFloat("bonusOreYield", player.getBonusOreYield()).apply();
-        editor.putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
-        editor.putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
-        editor.putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
-        editor.putFloat("golemXPYield", golem.getXPYield()).apply();
-        editor.putFloat("golemGoldYield", golem.getGoldYield()).apply();
-        editor.putFloat("golemOreYield", golem.getOreYield()).apply();
+        preferences.edit().putFloat("glory", player.getGlory()).apply();
+        preferences.edit().putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
+        preferences.edit().putFloat("baseHealth", player.getBaseHealth()).apply();
+        preferences.edit().putFloat("maxHealth", player.getMaxHealth()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
+        preferences.edit().putFloat("baseDefense", player.getBaseDefense()).apply();
+        preferences.edit().putFloat("defense", player.getDefense()).apply();
+        preferences.edit().putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
+        preferences.edit().putFloat("baseDamage", player.getBaseDamage()).apply();
+        preferences.edit().putFloat("damage", player.getDamage()).apply();
+        preferences.edit().putFloat("bonusXPYield", player.getBonusXPYield()).apply();
+        preferences.edit().putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
+        preferences.edit().putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
+        preferences.edit().putFloat("bonusOreYield", player.getBonusOreYield()).apply();
+        preferences.edit().putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
+        preferences.edit().putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
+        preferences.edit().putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
+        preferences.edit().putFloat("golemXPYield", golem.getXPYield()).apply();
+        preferences.edit().putFloat("golemGoldYield", golem.getGoldYield()).apply();
+        preferences.edit().putFloat("golemOreYield", golem.getOreYield()).apply();
     }
+
     public void upgradeBaseHealth(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             player.decreaseMaxHealth(player.getMaxHealthGearBonus());
             player.decreaseDefense(player.getDefenseGearBonus());
             player.decreaseDamage(player.getDamageGearBonus());
@@ -197,16 +197,16 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusBaseHealth.setText(bonusBaseHealthText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
-            editor.putFloat("baseHealth", player.getBaseHealth()).apply();
-            editor.putFloat("maxHealth", player.getMaxHealth()).apply();
-            editor.putFloat("health", player.getHealth()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusBaseHealth", player.getBonusBaseHealth()).apply();
+            preferences.edit().putFloat("baseHealth", player.getBaseHealth()).apply();
+            preferences.edit().putFloat("maxHealth", player.getMaxHealth()).apply();
+            preferences.edit().putFloat("health", player.getHealth()).apply();
         }
     }
+
     public void upgradeBaseDefense(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             player.decreaseMaxHealth(player.getMaxHealthGearBonus());
             player.decreaseDefense(player.getDefenseGearBonus());
             player.decreaseDamage(player.getDamageGearBonus());
@@ -220,15 +220,15 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusBaseDefense.setText(bonusBaseDefenseText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
-            editor.putFloat("baseDefense", player.getBaseDefense()).apply();
-            editor.putFloat("defense", player.getDefense()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusBaseDefense", player.getBonusBaseDefense()).apply();
+            preferences.edit().putFloat("baseDefense", player.getBaseDefense()).apply();
+            preferences.edit().putFloat("defense", player.getDefense()).apply();
         }
     }
+
     public void upgradeBaseDamage(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             player.decreaseMaxHealth(player.getMaxHealthGearBonus());
             player.decreaseDefense(player.getDefenseGearBonus());
             player.decreaseDamage(player.getDamageGearBonus());
@@ -242,15 +242,15 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusBaseDamage.setText(bonusBaseDamageText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
-            editor.putFloat("baseDamage", player.getBaseDamage()).apply();
-            editor.putFloat("damage", player.getDamage()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusBaseDamage", player.getBonusBaseDamage()).apply();
+            preferences.edit().putFloat("baseDamage", player.getBaseDamage()).apply();
+            preferences.edit().putFloat("damage", player.getDamage()).apply();
         }
     }
+
     public void upgradeXPYield(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             spriggan.setXPYield(spriggan.getXPYield() / (1 + (player.getBonusXPYield() / 100)));
             player.increaseBonusXP();
             spriggan.setXPYield(spriggan.getXPYield() * (1 + (player.getBonusXPYield() / 100)));
@@ -260,15 +260,14 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusXPYield.setText(bonusXPYieldText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusXPYield", player.getBonusXPYield()).apply();
-            editor.putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
-            editor.putFloat("golemXPYield", golem.getXPYield()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusXPYield", player.getBonusXPYield()).apply();
+            preferences.edit().putFloat("sprigganXPYield", spriggan.getXPYield()).apply();
+            preferences.edit().putFloat("golemXPYield", golem.getXPYield()).apply();
         }
     }
     public void upgradeGoldYield(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             Log.d("tag", "Spriggan gold yield: " + spriggan.getGoldYield() + "");
             spriggan.setGoldYield(spriggan.getGoldYield() / (1 + (player.getBonusGoldYield() / 100)));
             golem.setGoldYield(golem.getGoldYield() / (1 + (player.getBonusGoldYield() / 100)));
@@ -281,15 +280,15 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusGoldYield.setText(bonusGoldYieldText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
-            editor.putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
-            editor.putFloat("golemGoldYield", golem.getGoldYield()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusGoldYield", player.getBonusGoldYield()).apply();
+            preferences.edit().putFloat("sprigganGoldYield", spriggan.getGoldYield()).apply();
+            preferences.edit().putFloat("golemGoldYield", golem.getGoldYield()).apply();
         }
     }
+
     public void upgradeHerbYield(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             spriggan.setHerbYield(spriggan.getHerbYield() / (1 + (player.getBonusHerbYield() / 100)));
             player.increaseBonusHerbs();
             spriggan.setHerbYield(spriggan.getHerbYield() * (1 + (player.getBonusHerbYield() / 100)));
@@ -299,14 +298,14 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusHerbsYield.setText(bonusHerbYieldText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
-            editor.putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusHerbYield", player.getBonusHerbYield()).apply();
+            preferences.edit().putFloat("sprigganHerbYield", spriggan.getHerbYield()).apply();
         }
     }
+
     public void upgradeOreYield(View view) {
-        if (player.getGlory() >= 1)
-        {
+        if (player.getGlory() >= 1) {
             golem.setOreYield(golem.getOreYield() / (1 + (player.getBonusOreYield() / 100)));
             player.increaseBonusOres();
             golem.setOreYield(golem.getOreYield() * (1 + (player.getBonusOreYield() / 100)));
@@ -316,11 +315,12 @@ public class Glory extends AppCompatActivity {
             glory.setText(gloryText);
             bonusOreYield.setText(bonusOreYieldText);
 
-            editor.putFloat("glory", player.getGlory()).apply();
-            editor.putFloat("bonusOreYield", player.getBonusOreYield()).apply();
-            editor.putFloat("golemOreYield", golem.getOreYield()).apply();
+            preferences.edit().putFloat("glory", player.getGlory()).apply();
+            preferences.edit().putFloat("bonusOreYield", player.getBonusOreYield()).apply();
+            preferences.edit().putFloat("golemOreYield", golem.getOreYield()).apply();
         }
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -336,26 +336,32 @@ public class Glory extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

@@ -14,6 +14,7 @@ import com.example.erik.questforglory.classes.Skill;
 import com.example.erik.questforglory.R;
 
 public class Kingdom extends AppCompatActivity {
+
     Intent intent;
     Bundle bundle;
     Player player;
@@ -55,12 +56,12 @@ public class Kingdom extends AppCompatActivity {
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        herbs = (TextView) findViewById(R.id.herbs);
-        ores = (TextView) findViewById(R.id.ores);
-        soulDust = (TextView) findViewById(R.id.soulDust);
-        gold =(TextView) findViewById(R.id.gold);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        herbs = findViewById(R.id.herbs);
+        ores = findViewById(R.id.ores);
+        soulDust = findViewById(R.id.soulDust);
+        gold = findViewById(R.id.gold);
 
         levelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -77,6 +78,7 @@ public class Kingdom extends AppCompatActivity {
         soulDust.setText(soulDustText);
         gold.setText(goldText);
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -92,38 +94,47 @@ public class Kingdom extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         saveObjectsInBundle();
     }
+
     public void alchemy(View view) {
         intent = new Intent(this, Alchemy.class);
         saveObjectsInBundle();
     }
+
     public void blacksmithing(View view) {
         intent = new Intent(this, Blacksmithing.class);
         saveObjectsInBundle();
     }
+
     public void enchanting(View view) {
         intent = new Intent(this, Enchanting.class);
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

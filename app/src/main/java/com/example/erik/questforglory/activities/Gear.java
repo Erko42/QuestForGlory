@@ -1,6 +1,5 @@
 package com.example.erik.questforglory.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -13,7 +12,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.erik.questforglory.classes.Monster;
@@ -27,9 +25,9 @@ import com.example.erik.questforglory.R;
 import java.util.ArrayList;
 
 public class Gear extends AppCompatActivity {
+    
     DatabaseHelper db;
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     Intent intent;
     Bundle bundle;
     ConstraintLayout mainConstraintLayout;
@@ -48,7 +46,7 @@ public class Gear extends AppCompatActivity {
     ArrayList<GearPiece> gearInventory;
     ArrayList<TextView> gearInventoryViews;
     ArrayList<TextView> gearEquipedViews;
-    ArrayList<String> gearSorts;
+    ArrayList<String> gearTypes;
     ArrayList<TextView> gearSlots;
     TextView level;
     TextView XP;
@@ -82,7 +80,6 @@ public class Gear extends AppCompatActivity {
     int gearEquipedTempId;
 
     DisplayMetrics displayMetrics;
-    WindowManager wm;
     int screenHeight;
     long gearPieceHeight;
 
@@ -90,23 +87,22 @@ public class Gear extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         displayMetrics = new DisplayMetrics();
-        wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE); // the results will be higher than using the activity context object or the getWindowManager() shortcut
-        wm.getDefaultDisplay().getMetrics(displayMetrics);
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenHeight = displayMetrics.heightPixels;
         gearPieceHeight = Math.round(screenHeight * 0.077) - 7;
 
-        gearSorts = new ArrayList<>();
-        gearSorts.add("Helm");
-        gearSorts.add("Pauldrons");
-        gearSorts.add("Chestplate");
-        gearSorts.add("Bracers");
-        gearSorts.add("MainHand Sword");
-        gearSorts.add("OffHand Sword");
-        gearSorts.add("OffHand Shield");
-        gearSorts.add("Gauntlets");
-        gearSorts.add("Belt");
-        gearSorts.add("Legplates");
-        gearSorts.add("Sabatons");
+        gearTypes = new ArrayList<>();
+        gearTypes.add("Helm");
+        gearTypes.add("Pauldrons");
+        gearTypes.add("Chestplate");
+        gearTypes.add("Bracers");
+        gearTypes.add("MainHand Sword");
+        gearTypes.add("OffHand Sword");
+        gearTypes.add("OffHand Shield");
+        gearTypes.add("Gauntlets");
+        gearTypes.add("Belt");
+        gearTypes.add("Legplates");
+        gearTypes.add("Sabatons");
 
         initGearInventory();
     }
@@ -125,17 +121,18 @@ public class Gear extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         saveObjectsInBundle();
     }
+
     public void initGearInventory() {
         setContentView(R.layout.activity_gear);
 
         db = new DatabaseHelper(this);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
@@ -148,33 +145,33 @@ public class Gear extends AppCompatActivity {
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
-        mainConstraintLayout = (ConstraintLayout) findViewById(R.id.mainConstraint);
-        scrollConstraintLayout = (ConstraintLayout) findViewById(R.id.constGearInventory);
+        mainConstraintLayout = findViewById(R.id.mainConstraint);
+        scrollConstraintLayout = findViewById(R.id.constGearInventory);
         constraintSet = new ConstraintSet();
 
-        gearInventory = new ArrayList<GearPiece>();
-        gearInventoryViews = new ArrayList<TextView>();
-        gearEquipedViews = new ArrayList<TextView>();
+        gearInventory = new ArrayList<>();
+        gearInventoryViews = new ArrayList<>();
+        gearEquipedViews = new ArrayList<>();
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        maxHealth = (TextView) findViewById(R.id.maxHealth);
-        defense = (TextView) findViewById(R.id.defense);
-        damage = (TextView) findViewById(R.id.damage);
-        blockChance = (TextView) findViewById(R.id.blockChance);
-        critChance = (TextView) findViewById(R.id.critChance);
-        gearInfo = (TextView) findViewById(R.id.gearInfo);
-        equipOrUnequip = (TextView) findViewById(R.id.equipOrUnequip);
-        head = (TextView) findViewById(R.id.head);
-        shoulders = (TextView) findViewById(R.id.shoulders);
-        chest = (TextView) findViewById(R.id.chest);
-        wrists = (TextView) findViewById(R.id.wrists);
-        mainHand = (TextView) findViewById(R.id.mainHand);
-        offHand = (TextView) findViewById(R.id.offHand);
-        hands = (TextView) findViewById(R.id.hands);
-        waist = (TextView) findViewById(R.id.waist);
-        legs = (TextView) findViewById(R.id.legs);
-        feet = (TextView) findViewById(R.id.feet);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        maxHealth = findViewById(R.id.maxHealth);
+        defense = findViewById(R.id.defense);
+        damage = findViewById(R.id.damage);
+        blockChance = findViewById(R.id.blockChance);
+        critChance = findViewById(R.id.critChance);
+        gearInfo = findViewById(R.id.gearInfo);
+        equipOrUnequip = findViewById(R.id.equipOrUnequip);
+        head = findViewById(R.id.head);
+        shoulders = findViewById(R.id.shoulders);
+        chest = findViewById(R.id.chest);
+        wrists = findViewById(R.id.wrists);
+        mainHand = findViewById(R.id.mainHand);
+        offHand = findViewById(R.id.offHand);
+        hands = findViewById(R.id.hands);
+        waist = findViewById(R.id.waist);
+        legs = findViewById(R.id.legs);
+        feet = findViewById(R.id.feet);
 
         gearSlots = new ArrayList<>();
         gearSlots.add(head);
@@ -217,30 +214,39 @@ public class Gear extends AppCompatActivity {
         while (res.moveToNext()) {
             GearPiece gearPiece = new GearPiece(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getFloat(5), res.getFloat(6), res.getFloat(7), res.getFloat(8), res.getFloat(9), res.getFloat(10), 0, res.getFloat(11), 0);
             TextView gearPieceView = new TextView(getApplicationContext());
+            String gearPieceString;
 
             if (gearPiece.getDefense() == 0) {
-                gearPieceView.setText(gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Off)");
+                gearPieceString = gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Off)";
             } else {
-                gearPieceView.setText(gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Def)");
+                gearPieceString = gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Def)";
             }
+            gearPieceView.setText(gearPieceString);
             gearPieceView.setGravity(Gravity.CENTER);
             gearPieceView.setTextColor(Color.BLACK);
             gearPieceView.setTypeface(Typeface.create("serif", Typeface.NORMAL));
             gearPieceView.setId(gearInventoryId);
 
-            if (gearPiece.getRarity().equals("common")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_common_quality);
-            } else if (gearPiece.getRarity().equals("uncommon")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_uncommon_quality);
-            } else if (gearPiece.getRarity().equals("rare")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_rare_quality);
-            } else if (gearPiece.getRarity().equals("epic")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_epic_quality);
-            } else if (gearPiece.getRarity().equals("legendary")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_legendary_quality);
+            switch (gearPiece.getRarity()) {
+                case "common":
+                    gearPieceView.setBackgroundResource(R.drawable.border_common_quality);
+                    break;
+                case "uncommon":
+                    gearPieceView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                    break;
+                case "rare":
+                    gearPieceView.setBackgroundResource(R.drawable.border_rare_quality);
+                    break;
+                case "epic":
+                    gearPieceView.setBackgroundResource(R.drawable.border_epic_quality);
+                    break;
+                case "legendary":
+                    gearPieceView.setBackgroundResource(R.drawable.border_legendary_quality);
+                    break;
             }
             gearInventory.add(gearPiece);
             gearInventoryViews.add(gearPieceView);
+            
             if (gearPiece.getIsEquiped() == 0) {
                 scrollConstraintLayout.addView(gearPieceView);
             } else if (gearPiece.getIsEquiped() == 1) {
@@ -248,25 +254,25 @@ public class Gear extends AppCompatActivity {
             }
             gearPieceView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    equipOrUnequip.setId(v.getId());
+                public void onClick(View view) {
+                    equipOrUnequip.setId(view.getId());
 
-                    if (gearInventory.get(v.getId()).getIsEquiped() == 0) {
+                    if (gearInventory.get(view.getId()).getIsEquiped() == 0) {
                         equipOrUnequipText = "Equip";
-                    } else if (gearInventory.get(v.getId()).getIsEquiped() == 1) {
+                    } else if (gearInventory.get(view.getId()).getIsEquiped() == 1) {
                         equipOrUnequipText = "Unequip";
                     }
-                    gearInfoText = gearInventory.get(v.getId()).getStats();
+                    gearInfoText = gearInventory.get(view.getId()).getStats();
 
-                    if (gearInventory.get(v.getId()).getRarity().equals("common")) {
+                    if (gearInventory.get(view.getId()).getRarity().equals("common")) {
                         gearInfo.setBackgroundResource(R.drawable.border_common_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("uncommon")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("uncommon")) {
                         gearInfo.setBackgroundResource(R.drawable.border_uncommon_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("rare")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("rare")) {
                         gearInfo.setBackgroundResource(R.drawable.border_rare_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("epic")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("epic")) {
                         gearInfo.setBackgroundResource(R.drawable.border_epic_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("legendary")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("legendary")) {
                         gearInfo.setBackgroundResource(R.drawable.border_legendary_quality);
                     }
                     equipOrUnequip.setText(equipOrUnequipText);
@@ -277,25 +283,24 @@ public class Gear extends AppCompatActivity {
             {
                 if (gearInventoryId == 0 || gearInventory.get(gearInventoryId - gearEquipedTempId).getIsEquiped() == 1) {
                     constraintSet.constrainHeight(gearInventoryViews.get(gearInventoryId).getId(), (int) gearPieceHeight);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.LEFT, constraintSet.PARENT_ID, constraintSet.LEFT, 0);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.RIGHT, constraintSet.PARENT_ID, constraintSet.RIGHT, 0);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.TOP, constraintSet.PARENT_ID, constraintSet.TOP, 0);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
                 } else if (gearInventoryId > 0) {
                     constraintSet.constrainHeight(gearInventoryViews.get(gearInventoryId).getId(), (int) gearPieceHeight);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.LEFT, constraintSet.PARENT_ID, constraintSet.LEFT, 0);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.RIGHT, constraintSet.PARENT_ID, constraintSet.RIGHT, 0);
-                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.TOP, gearInventoryViews.get(gearInventoryId - gearEquipedTempId).getId(), constraintSet.TOP, (int) gearPieceHeight);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
+                    constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.TOP, gearInventoryViews.get(gearInventoryId - gearEquipedTempId).getId(), ConstraintSet.TOP, (int) gearPieceHeight);
                 }
                 constraintSet.applyTo(scrollConstraintLayout);
                 gearEquipedTempId = 1;
-            }
-            else if (gearPiece.getIsEquiped() == 1) {
-                for (int i = 0; i < gearSorts.size(); i++) {
-                    if (gearPiece.getName().equals(gearSorts.get(i))) {
-                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.LEFT, gearSlots.get(i).getId(), constraintSet.LEFT, 0);
-                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.RIGHT, gearSlots.get(i).getId(), constraintSet.RIGHT, 0);
-                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.TOP, gearSlots.get(i).getId(), constraintSet.TOP, 0);
-                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), constraintSet.BOTTOM, gearSlots.get(i).getId(), constraintSet.BOTTOM, 0);
+            } else if (gearPiece.getIsEquiped() == 1) {
+                for (int i = 0; i < gearTypes.size(); i++) {
+                    if (gearPiece.getName().equals(gearTypes.get(i))) {
+                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.LEFT, gearSlots.get(i).getId(), ConstraintSet.LEFT, 0);
+                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.RIGHT, gearSlots.get(i).getId(), ConstraintSet.RIGHT, 0);
+                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.TOP, gearSlots.get(i).getId(), ConstraintSet.TOP, 0);
+                        constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.BOTTOM, gearSlots.get(i).getId(), ConstraintSet.BOTTOM, 0);
                     }
                     constraintSet.applyTo(mainConstraintLayout);
 
@@ -307,12 +312,13 @@ public class Gear extends AppCompatActivity {
             }
         }
     }
+
     public void equipOrUnequip(View view) {
         if (view.getId() <= gearInventory.size()) {
             if (gearInventory.get(view.getId()).getIsEquiped() == 0) {
                 for (int i = 0; i < gearInventory.size(); i++) {
-                    for (int y = 0; y < gearSorts.size(); y++) {
-                        if (gearInventory.get(view.getId()).getName().equals(gearSorts.get(y)) && gearInventory.get(i).getName().equals(gearSorts.get(y)) && gearInventory.get(i).getIsEquiped() == 1) {
+                    for (int y = 0; y < gearTypes.size(); y++) {
+                        if (gearInventory.get(view.getId()).getName().equals(gearTypes.get(y)) && gearInventory.get(i).getName().equals(gearTypes.get(y)) && gearInventory.get(i).getIsEquiped() == 1) {
                             gearInventory.get(i).setIsEquiped(0);
                             db.updateData(i + 1 + "",
                                     gearInventory.get(i).getIsEquiped(),
@@ -407,32 +413,37 @@ public class Gear extends AppCompatActivity {
         blockChance.setText(blockChanceText);
         critChance.setText(critChanceText);
 
-        editor.putFloat("maxHealth", player.getMaxHealth()).apply();
-        editor.putFloat("health", player.getHealth()).apply();
-        editor.putFloat("defense", player.getDefense()).apply();
-        editor.putFloat("damage", player.getDamage()).apply();
-        editor.putFloat("blockChance", player.getBlockChance()).apply();
-        editor.putFloat("critChance", player.getCritChance()).apply();
-        editor.putFloat("maxHealthGearBonus", player.getMaxHealthGearBonus()).apply();
-        editor.putFloat("defenseGearBonus", player.getDefenseGearBonus()).apply();
-        editor.putFloat("damageGearBonus", player.getDamageGearBonus()).apply();
+        preferences.edit().putFloat("maxHealth", player.getMaxHealth()).apply();
+        preferences.edit().putFloat("health", player.getHealth()).apply();
+        preferences.edit().putFloat("defense", player.getDefense()).apply();
+        preferences.edit().putFloat("damage", player.getDamage()).apply();
+        preferences.edit().putFloat("blockChance", player.getBlockChance()).apply();
+        preferences.edit().putFloat("critChance", player.getCritChance()).apply();
+        preferences.edit().putFloat("maxHealthGearBonus", player.getMaxHealthGearBonus()).apply();
+        preferences.edit().putFloat("defenseGearBonus", player.getDefenseGearBonus()).apply();
+        preferences.edit().putFloat("damageGearBonus", player.getDamageGearBonus()).apply();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

@@ -15,8 +15,8 @@ import com.example.erik.questforglory.classes.Skill;
 import com.example.erik.questforglory.R;
 
 public class Skills extends AppCompatActivity {
+    
     SharedPreferences preferences;
-    SharedPreferences.Editor editor;
     Intent intent;
     Bundle bundle;
     Player player;
@@ -50,7 +50,6 @@ public class Skills extends AppCompatActivity {
         setContentView(R.layout.activity_skills);
 
         preferences = getSharedPreferences("Data", 0);
-        editor = preferences.edit();
 
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
@@ -63,13 +62,13 @@ public class Skills extends AppCompatActivity {
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
         gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
-        level = (TextView) findViewById(R.id.level);
-        XP = (TextView) findViewById(R.id.XP);
-        skillPoints = (TextView) findViewById(R.id.skillPoints);
-        strikeInfo = (TextView) findViewById(R.id.strikeInfo);
-        chargeInfo = (TextView) findViewById(R.id.chargeInfo);
-        mendInfo = (TextView) findViewById(R.id.mendInfo);
-        defenseUpInfo = (TextView) findViewById(R.id.defenseUpInfo);
+        level = findViewById(R.id.level);
+        XP = findViewById(R.id.XP);
+        skillPoints = findViewById(R.id.skillPoints);
+        strikeInfo = findViewById(R.id.strikeInfo);
+        chargeInfo = findViewById(R.id.chargeInfo);
+        mendInfo = findViewById(R.id.mendInfo);
+        defenseUpInfo = findViewById(R.id.defenseUpInfo);
 
         levelText = "Level " + Math.round(player.getLevel());
         XPText = "XP " + Math.round(player.getXP()) + " / " + Math.round(player.getXPToNextLevel());
@@ -87,6 +86,7 @@ public class Skills extends AppCompatActivity {
         mendInfo.setText(mendInfoText);
         defenseUpInfo.setText(defenseUpInfoText);
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -102,6 +102,7 @@ public class Skills extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void resetSkills(View view) {
         if (strike.getLevel() > 1) {
             player.increaseSkillPoints(Math.round(strike.getLevel()) - 1);
@@ -110,9 +111,9 @@ public class Skills extends AppCompatActivity {
             strikeInfoText = "Strike Level " + Math.round(strike.getLevel()) + "\nDamaging enemies\nfor " + Math.round(strike.getDamage()) + "% damage";
             strikeInfo.setText(strikeInfoText);
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("strikeLevel", strike.getLevel()).apply();
-            editor.putFloat("strikeDamage", strike.getDamage()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("strikeLevel", strike.getLevel()).apply();
+            preferences.edit().putFloat("strikeDamage", strike.getDamage()).apply();
         }
         if (charge.getLevel() > 1) {
             player.increaseSkillPoints(Math.round(charge.getLevel()) * 4 - 4);
@@ -123,11 +124,11 @@ public class Skills extends AppCompatActivity {
             chargeInfoText = "Charge Level " + Math.round(charge.getLevel()) + " (CD: " + Math.round(charge.getCooldown()) + ")" + "\nDamaging enemies\nfor " + Math.round(charge.getDamage()) + "% damage\nStun for " + Math.round(charge.getDuration()) + " turns";
             chargeInfo.setText(chargeInfoText);
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("chargeLevel", charge.getLevel()).apply();
-            editor.putFloat("chargeDamage", charge.getDamage()).apply();
-            editor.putFloat("chargeDuration", charge.getDuration()).apply();
-            editor.putFloat("chargeCooldown", charge.getCooldown()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("chargeLevel", charge.getLevel()).apply();
+            preferences.edit().putFloat("chargeDamage", charge.getDamage()).apply();
+            preferences.edit().putFloat("chargeDuration", charge.getDuration()).apply();
+            preferences.edit().putFloat("chargeCooldown", charge.getCooldown()).apply();
         }
         if (mend.getLevel() > 1) {
             player.increaseSkillPoints(Math.round(mend.getLevel()) * 3 - 3);
@@ -136,9 +137,9 @@ public class Skills extends AppCompatActivity {
             mendInfoText = "Mend Level " + Math.round(mend.getLevel()) + " (CD: " + Math.round(mend.getCooldown()) + ")" + "\nHeal over time\nfor " + Math.round(mend.getHealing()) + "% max health\nfor " + Math.round(mend.getDuration()) + " turns";
             mendInfo.setText(mendInfoText);
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("mendLevel", mend.getLevel()).apply();
-            editor.putFloat("mendHealing", mend.getHealing()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("mendLevel", mend.getLevel()).apply();
+            preferences.edit().putFloat("mendHealing", mend.getHealing()).apply();
         }
         if (defenseUp.getLevel() > 1) {
             player.increaseSkillPoints(Math.round(defenseUp.getLevel()) * 2 - 2);
@@ -147,21 +148,22 @@ public class Skills extends AppCompatActivity {
             defenseUpInfoText = "Defense Up Level " + Math.round(defenseUp.getLevel()) + " (CD: " + Math.round(defenseUp.getCooldown()) + ")" + "\nGain +" + Math.round(defenseUp.getDefense()) + "% defense";
             defenseUpInfo.setText(defenseUpInfoText);
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
-            editor.putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
+            preferences.edit().putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
         }
         skillPointsText = "Skill Points: " + Math.round(player.getSkillPoints());
         skillPoints.setText(skillPointsText);
     }
+
     public void upgradeStrike(View view) {
-        if(Math.round(player.getSkillPoints()) >= 1) {
+        if (Math.round(player.getSkillPoints()) >= 1) {
             player.decreaseSkillPoints(1);
             strike.levelUpStrike();
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("strikeLevel", strike.getLevel());
-            editor.putFloat("strikeDamage", strike.getDamage()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("strikeLevel", strike.getLevel()).apply();
+            preferences.edit().putFloat("strikeDamage", strike.getDamage()).apply();
 
             skillPointsText = "Skill Points: " + Math.round(player.getSkillPoints());
             strikeInfoText = "Strike Level " + Math.round(strike.getLevel()) + "\nDamaging enemies\nfor " + Math.round(strike.getDamage()) + "% damage";
@@ -170,16 +172,17 @@ public class Skills extends AppCompatActivity {
             strikeInfo.setText(strikeInfoText);
         }
     }
+
     public void upgradeCharge(View view) {
         if (Math.round(player.getSkillPoints()) >= 4) {
             player.decreaseSkillPoints(4);
             charge.leveUpCharge();
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("chargeLevel", charge.getLevel()).apply();
-            editor.putFloat("chargeDamage", charge.getDamage()).apply();
-            editor.putFloat("chargeDuration", charge.getDuration()).apply();
-            editor.putFloat("chargeCooldown", charge.getCooldown()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("chargeLevel", charge.getLevel()).apply();
+            preferences.edit().putFloat("chargeDamage", charge.getDamage()).apply();
+            preferences.edit().putFloat("chargeDuration", charge.getDuration()).apply();
+            preferences.edit().putFloat("chargeCooldown", charge.getCooldown()).apply();
 
             skillPointsText = "Skill Points: " + Math.round(player.getSkillPoints());
             chargeInfoText = "Charge Level " + Math.round(charge.getLevel()) + " (CD: " + Math.round(charge.getCooldown()) + ")" + "\nDamaging enemies\nfor " + Math.round(charge.getDamage()) + "% damage\nStun for " + Math.round(charge.getDuration()) + " turns";
@@ -188,16 +191,17 @@ public class Skills extends AppCompatActivity {
             chargeInfo.setText(chargeInfoText);
         }
     }
+
     public void upgradeMend(View view) {
         if (Math.round(player.getSkillPoints()) >= 3) {
             player.decreaseSkillPoints(3);
             mend.levelUpMend();
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("mendLevel", mend.getLevel()).apply();
-            editor.putFloat("mendHealing", mend.getHealing()).apply();
-            editor.putFloat("mendDuration", mend.getDuration()).apply();
-            editor.putFloat("mendCooldown", mend.getCooldown()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("mendLevel", mend.getLevel()).apply();
+            preferences.edit().putFloat("mendHealing", mend.getHealing()).apply();
+            preferences.edit().putFloat("mendDuration", mend.getDuration()).apply();
+            preferences.edit().putFloat("mendCooldown", mend.getCooldown()).apply();
 
             skillPointsText = "Skill Points: " + Math.round(player.getSkillPoints());
             mendInfoText = "Mend Level " + Math.round(mend.getLevel()) + " (CD: " + Math.round(mend.getCooldown()) + ")" + "\nHeal over time\nfor " + Math.round(mend.getHealing()) + "% max health\nfor " + Math.round(mend.getDuration()) + " turns";
@@ -206,16 +210,17 @@ public class Skills extends AppCompatActivity {
             mendInfo.setText(mendInfoText);
         }
     }
+
     public void upgradeDefenseUp(View view) {
         if (Math.round(player.getSkillPoints()) >= 2) {
             player.decreaseSkillPoints(2);
             defenseUp.levelUpDefenseUp();
 
-            editor.putFloat("skillPoints", player.getSkillPoints()).apply();
-            editor.putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
-            editor.putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
-            editor.putFloat("defenseUpDuration", defenseUp.getDuration()).apply();
-            editor.putFloat("defenseUpCooldown", defenseUp.getCooldown()).apply();
+            preferences.edit().putFloat("skillPoints", player.getSkillPoints()).apply();
+            preferences.edit().putFloat("defenseUpLevel", defenseUp.getLevel()).apply();
+            preferences.edit().putFloat("defenseUpDefense", defenseUp.getDefense()).apply();
+            preferences.edit().putFloat("defenseUpDuration", defenseUp.getDuration()).apply();
+            preferences.edit().putFloat("defenseUpCooldown", defenseUp.getCooldown()).apply();
 
             skillPointsText = "Skill Points: " + Math.round(player.getSkillPoints());
             defenseUpInfoText = "Defense Up Level " + Math.round(defenseUp.getLevel()) + " (CD: " + Math.round(defenseUp.getCooldown()) + ")" + "\nGain +" + Math.round(defenseUp.getDefense()) + "% defense";
@@ -224,26 +229,32 @@ public class Skills extends AppCompatActivity {
             defenseUpInfo.setText(defenseUpInfoText);
         }
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

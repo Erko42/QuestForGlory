@@ -115,31 +115,35 @@ public class BlacksmithingSell extends AppCompatActivity {
         while (res.moveToNext()) {
             GearPiece gearPiece = new GearPiece(res.getInt(1), res.getString(2), res.getString(3), res.getString(4), res.getFloat(5), res.getFloat(6), res.getFloat(7), res.getFloat(8), res.getFloat(9), res.getFloat(10), 0, res.getFloat(11), 0);
             TextView gearPieceView = new TextView(this);
+            String gearPieceString;
 
-            gearPieceView.setText(gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()));
+            if (gearPiece.getDefense() == 0) {
+                gearPieceString = gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Off)";
+            } else {
+                gearPieceString = gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Def)";
+            }
+            gearPieceView.setText(gearPieceString);
             gearPieceView.setGravity(Gravity.CENTER);
             gearPieceView.setTextColor(Color.BLACK);
             gearPieceView.setTypeface(Typeface.create("serif", Typeface.NORMAL));
             gearPieceView.setId(gearInventoryId);
 
-            if (gearPiece.getDefense() == 0) {
-                gearPieceView.setText(gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Off)");
-            } else {
-                gearPieceView.setText(gearPiece.getName() + "\nLevel " + Math.round(gearPiece.getLevel()) + " (Def)");
-            }
             switch (gearPiece.getRarity()) {
-
-            }
-            if (gearPiece.getRarity().equals("common")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_common_quality);
-            } else if (gearPiece.getRarity().equals("uncommon")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_uncommon_quality);
-            } else if (gearPiece.getRarity().equals("rare")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_rare_quality);
-            } else if (gearPiece.getRarity().equals("epic")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_epic_quality);
-            } else if (gearPiece.getRarity().equals("legendary")) {
-                gearPieceView.setBackgroundResource(R.drawable.border_legendary_quality);
+                case "common":
+                    gearPieceView.setBackgroundResource(R.drawable.border_common_quality);
+                    break;
+                case "uncommon":
+                    gearPieceView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                    break;
+                case "rare":
+                    gearPieceView.setBackgroundResource(R.drawable.border_rare_quality);
+                    break;
+                case "epic":
+                    gearPieceView.setBackgroundResource(R.drawable.border_epic_quality);
+                    break;
+                case "legendary":
+                    gearPieceView.setBackgroundResource(R.drawable.border_legendary_quality);
+                    break;
             }
             gearInventory.add(gearPiece);
             gearInventoryViews.add(gearPieceView);
@@ -149,27 +153,27 @@ public class BlacksmithingSell extends AppCompatActivity {
             }
             gearPieceView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    sellGear.setId(v.getId());
+                public void onClick(View view) {
+                    sellGear.setId(view.getId());
 
-                    sellGearText = "Sell for\n" + Math.round(gearInventory.get(v.getId()).getGoldWorth()) + " Gold";
+                    sellGearText = "Sell for\n" + Math.round(gearInventory.get(view.getId()).getGoldWorth()) + " Gold";
 
-                    if (gearInventory.get(v.getId()).getHealth() == 0) {
-                        gearInfoText = gearInventory.get(v.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(v.getId()).getLevel()) + " (Off)" + "\n+" + Math.round(gearInventory.get(v.getId()).getDamage()) + " Damage";
-                    } else if (gearInventory.get(v.getId()).getDefense() == 0) {
-                        gearInfoText = gearInventory.get(v.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(v.getId()).getLevel()) + " (Off)" + "\n+" + Math.round(gearInventory.get(v.getId()).getHealth()) + " Health" + "\n+" + Math.round(gearInventory.get(v.getId()).getDamage()) + " Damage";
+                    if (gearInventory.get(view.getId()).getHealth() == 0) {
+                        gearInfoText = gearInventory.get(view.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(view.getId()).getLevel()) + " (Off)" + "\n+" + Math.round(gearInventory.get(view.getId()).getDamage()) + " Damage";
+                    } else if (gearInventory.get(view.getId()).getDefense() == 0) {
+                        gearInfoText = gearInventory.get(view.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(view.getId()).getLevel()) + " (Off)" + "\n+" + Math.round(gearInventory.get(view.getId()).getHealth()) + " Health" + "\n+" + Math.round(gearInventory.get(view.getId()).getDamage()) + " Damage";
                     } else {
-                        gearInfoText = gearInventory.get(v.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(v.getId()).getLevel()) + " (Def)" + "\n+" + Math.round(gearInventory.get(v.getId()).getHealth()) + " Health" + "\n+" + Math.round(gearInventory.get(v.getId()).getDefense()) + " Defense";
+                        gearInfoText = gearInventory.get(view.getId()).getName() + "\nLevel " + Math.round(gearInventory.get(view.getId()).getLevel()) + " (Def)" + "\n+" + Math.round(gearInventory.get(view.getId()).getHealth()) + " Health" + "\n+" + Math.round(gearInventory.get(view.getId()).getDefense()) + " Defense";
                     }
-                    if (gearInventory.get(v.getId()).getRarity().equals("common")) {
+                    if (gearInventory.get(view.getId()).getRarity().equals("common")) {
                         gearInfo.setBackgroundResource(R.drawable.border_common_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("uncommon")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("uncommon")) {
                         gearInfo.setBackgroundResource(R.drawable.border_uncommon_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("rare")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("rare")) {
                         gearInfo.setBackgroundResource(R.drawable.border_rare_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("epic")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("epic")) {
                         gearInfo.setBackgroundResource(R.drawable.border_epic_quality);
-                    } else if (gearInventory.get(v.getId()).getRarity().equals("legendary")) {
+                    } else if (gearInventory.get(view.getId()).getRarity().equals("legendary")) {
                         gearInfo.setBackgroundResource(R.drawable.border_legendary_quality);
                     }
                     sellGear.setText(sellGearText);
@@ -182,8 +186,7 @@ public class BlacksmithingSell extends AppCompatActivity {
                     constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
                     constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
                     constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
-                }
-                else if (gearInventoryId > 0) {
+                } else if (gearInventoryId > 0) {
                     constraintSet.constrainHeight(gearInventoryViews.get(gearInventoryId).getId(), 150);
                     constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
                     constraintSet.connect(gearInventoryViews.get(gearInventoryId).getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
@@ -191,8 +194,7 @@ public class BlacksmithingSell extends AppCompatActivity {
                 }
                 constraintSet.applyTo(scrollConstraintLayout);
                 gearEquipedTempId = 1;
-            }
-            else if (gearPiece.getIsEquiped() == 1) {
+            } else if (gearPiece.getIsEquiped() == 1) {
                 if (gearInventoryId != 0) {
                     gearEquipedTempId++;
                 }
@@ -200,6 +202,7 @@ public class BlacksmithingSell extends AppCompatActivity {
             gearInventoryId++;
         }
     }
+
     public void saveObjectsInBundle() {
         bundle = new Bundle();
         bundle.putSerializable("player", player);
@@ -215,10 +218,12 @@ public class BlacksmithingSell extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, Blacksmithing.class);
         saveObjectsInBundle();
     }
+
     public void sell(View view) {
         if (view.getId() <= gearInventory.size()) {
             player.increaseGold(gearInventory.get(view.getId()).getGoldWorth());
@@ -234,26 +239,32 @@ public class BlacksmithingSell extends AppCompatActivity {
             preferences.edit().putFloat("gold", player.getGold()).apply();
         }
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void kingdom(View view) {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();
