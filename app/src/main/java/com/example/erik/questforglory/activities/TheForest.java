@@ -379,19 +379,26 @@ public class TheForest extends AppCompatActivity {
                                     theGearPiece.getCritChance(),
                                     theGearPiece.getGoldWorth());
 
-                            gearPieceRewardView.setText(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)");
+                            String theGearPieceString = theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)";
+                            gearPieceRewardView.setText(theGearPieceString);
                             gearPieceRewardView.setVisibility(View.VISIBLE);
 
-                            if(theGearPiece.getRarity().equals("common")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
-                            } else if(theGearPiece.getRarity().equals("uncommon")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
-                            } else if(theGearPiece.getRarity().equals("rare")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
-                            } else if(theGearPiece.getRarity().equals("epic")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
-                            } else if(theGearPiece.getRarity().equals("legendary")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                            switch (gearPiece.getRarity()) {
+                                case "common":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
+                                    break;
+                                case "uncommon":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                                    break;
+                                case "rare":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
+                                    break;
+                                case "epic":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
+                                    break;
+                                case "legendary":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                    break;
                             }
                         } else if(gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && gearPieceType.get(whichGearPieceType).equals("MainHand Shield")) {
                             theGearPiece = new GearPiece(
@@ -423,19 +430,26 @@ public class TheForest extends AppCompatActivity {
                                     theGearPiece.getCritChance(),
                                     theGearPiece.getGoldWorth());
 
-                            gearPieceRewardView.setText(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)");
+                            String theGearPieceString = theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)";
+                            gearPieceRewardView.setText(theGearPieceString);
                             gearPieceRewardView.setVisibility(View.VISIBLE);
 
-                            if(theGearPiece.getRarity().equals("common")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
-                            } else if(theGearPiece.getRarity().equals("uncommon")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
-                            } else if(theGearPiece.getRarity().equals("rare")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
-                            } else if(theGearPiece.getRarity().equals("epic")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
-                            } else if(theGearPiece.getRarity().equals("legendary")) {
-                                gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                            switch (gearPiece.getRarity()) {
+                                case "common":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
+                                    break;
+                                case "uncommon":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                                    break;
+                                case "rare":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
+                                    break;
+                                case "epic":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
+                                    break;
+                                case "legendary":
+                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                    break;
                             }
                         } else if(gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && !gearPieceType.get(whichGearPieceType).equals("MainHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Shield")) {
                             if(gearPieceOffOrDefChance <= 50) {
@@ -468,19 +482,26 @@ public class TheForest extends AppCompatActivity {
                                         theGearPiece.getCritChance(),
                                         theGearPiece.getGoldWorth());
 
-                                gearPieceRewardView.setText(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)");
+                                String theGearPieceString = theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Def)";
+                                gearPieceRewardView.setText(theGearPieceString);
                                 gearPieceRewardView.setVisibility(View.VISIBLE);
 
-                                if(theGearPiece.getRarity().equals("common")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
-                                } else if(theGearPiece.getRarity().equals("uncommon")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
-                                } else if(theGearPiece.getRarity().equals("rare")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
-                                } else if(theGearPiece.getRarity().equals("epic")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
-                                } else if(theGearPiece.getRarity().equals("legendary")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                switch (gearPiece.getRarity()) {
+                                    case "common":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
+                                        break;
+                                    case "uncommon":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                                        break;
+                                    case "rare":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
+                                        break;
+                                    case "epic":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
+                                        break;
+                                    case "legendary":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                        break;
                                 }
                             } else {
                                 theGearPiece = new GearPiece(
@@ -512,19 +533,26 @@ public class TheForest extends AppCompatActivity {
                                         theGearPiece.getCritChance(),
                                         theGearPiece.getGoldWorth());
 
-                                gearPieceRewardView.setText(theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)");
+                                String theGearPieceString = theGearPiece.getName() + "\nLevel " + Math.round(theGearPiece.getLevel()) + " (Off)";
+                                gearPieceRewardView.setText(theGearPieceString);
                                 gearPieceRewardView.setVisibility(View.VISIBLE);
 
-                                if(theGearPiece.getRarity().equals("common")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
-                                } else if(theGearPiece.getRarity().equals("uncommon")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
-                                } else if(theGearPiece.getRarity().equals("rare")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
-                                } else if(theGearPiece.getRarity().equals("epic")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
-                                } else if(theGearPiece.getRarity().equals("legendary")) {
-                                    gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                switch (gearPiece.getRarity()) {
+                                    case "common":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_common_quality);
+                                        break;
+                                    case "uncommon":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_uncommon_quality);
+                                        break;
+                                    case "rare":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_rare_quality);
+                                        break;
+                                    case "epic":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_epic_quality);
+                                        break;
+                                    case "legendary":
+                                        gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
+                                        break;
                                 }
                             }
                         }

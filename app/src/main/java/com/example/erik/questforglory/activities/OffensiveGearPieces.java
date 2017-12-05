@@ -169,7 +169,6 @@ public class OffensiveGearPieces extends AppCompatActivity {
                 break;
         }
         gearPieces.setText(gearPiecesText);
-
         level.setText(levelText);
         XP.setText(XPText);
         ores.setText(oresText);

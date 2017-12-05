@@ -1,222 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/border_the_forest">
 
     <TextView
         android:id="@+id/level"
-        android:text="@string/level"
-        android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_level_xp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7"
+        android:text="@string/level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ascension"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/XP"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/ascension" />
+        app:layout_constraintRight_toLeftOf="@+id/XP"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7" />
 
     <TextView
         android:id="@+id/XP"
-        android:text="@string/XP"
-        android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_level_xp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7"
+        android:text="@string/XP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/skills"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/level"
-        app:layout_constraintBottom_toTopOf="@+id/skills" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="7" />
 
     <TextView
         android:id="@+id/ascension"
-        android:text="@string/ascension"
-        android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:onClick="ascension"
         android:gravity="center"
-        app:layout_constraintVertical_weight="8"
+        android:onClick="ascension"
+        android:text="@string/ascension"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ores"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/skills"
         app:layout_constraintTop_toBottomOf="@+id/level"
-        app:layout_constraintBottom_toTopOf="@+id/gearInfo1" />
+        app:layout_constraintVertical_weight="8" />
 
     <TextView
         android:id="@+id/skills"
-        android:text="@string/skills"
-        android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:onClick="skills"
         android:gravity="center"
-        app:layout_constraintVertical_weight="8"
-        app:layout_constraintRight_toLeftOf="@+id/glory"
+        android:onClick="skills"
+        android:text="@string/skills"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ores"
         app:layout_constraintLeft_toRightOf="@+id/ascension"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
         app:layout_constraintTop_toBottomOf="@+id/XP"
-        app:layout_constraintBottom_toTopOf="@+id/gearInfo2" />
+        app:layout_constraintVertical_weight="8" />
 
     <TextView
         android:id="@+id/glory"
-        android:text="@string/glory"
-        android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:onClick="glory"
         android:gravity="center"
-        app:layout_constraintVertical_weight="8"
-        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="glory"
+        android:text="@string/glory"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ores"
         app:layout_constraintLeft_toRightOf="@+id/skills"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/XP"
-        app:layout_constraintBottom_toTopOf="@+id/head" />
+        app:layout_constraintVertical_weight="8" />
+
+    <TextView
+        android:id="@+id/ores"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_the_mountain"
+        android:fontFamily="serif"
+        android:gravity="center_vertical"
+        android:text="@string/ores"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/gold"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skills"
+        app:layout_constraintVertical_weight="5" />
+
+    <TextView
+        android:id="@+id/gold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_gold"
+        android:fontFamily="serif"
+        android:gravity="center_vertical"
+        android:text="@string/gold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/gearInfo2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ores"
+        app:layout_constraintVertical_weight="5" />
 
     <TextView
         android:id="@+id/head"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/head"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/head"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/shoulders"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/glory" />
+        app:layout_constraintTop_toTopOf="@+id/gearInfo2"
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/shoulders"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/shoulders"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/shoulders"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/chest"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/head"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/chest"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/chest"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/chest"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/wrists"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shoulders"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/wrists"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/wrists"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/wrists"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/mainHand"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chest"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/mainHand"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/main_hand"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/main_hand"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/offHand"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wrists"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/offHand"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/off_hand"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/off_hand"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/hands"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainHand"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/hands"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/hands"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/hands"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/waist"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/offHand"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/waist"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/waist"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/waist"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/legs"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hands"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/legs"
@@ -225,32 +261,32 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/legs"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/legs"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/feet"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waist"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/feet"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:fontFamily="serif"
-        android:text="@string/feet"
         android:gravity="center"
-        app:layout_constraintVertical_weight="7.7"
+        android:text="@string/feet"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/quests"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/skills"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/legs"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintVertical_weight="6.7" />
 
     <TextView
         android:id="@+id/equipOrUnequip"
@@ -258,15 +294,16 @@
         android:layout_height="0dp"
         android:background="@drawable/border_the_ruin"
         android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="equipOrUnequip"
         android:text="Enchant for\n50 SoulDust"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="11.7"
         app:layout_constraintBottom_toTopOf="@+id/upgradeQuality"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/glory"
-        app:layout_constraintTop_toBottomOf="@+id/gearInfo2"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/gearInfo1"
+        app:layout_constraintVertical_weight="9.2" />
 
     <TextView
         android:id="@+id/gearInfo1"
@@ -275,13 +312,14 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/border_the_forest"
         android:fontFamily="serif"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center_horizontal"
-        app:layout_constraintVertical_weight="30.8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toTopOf="@+id/equipOrUnequip"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/skills"
-        app:layout_constraintTop_toBottomOf="@+id/ascension"
-        app:layout_constraintBottom_toTopOf="@+id/equipOrUnequip" />
+        app:layout_constraintTop_toBottomOf="@+id/gold"
+        app:layout_constraintVertical_weight="30.8" />
 
     <TextView
         android:id="@+id/gearInfo2"
@@ -290,13 +328,13 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/border_the_forest"
         android:fontFamily="serif"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center_horizontal"
-        app:layout_constraintVertical_weight="30.8"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/equipOrUnequip"
-        app:layout_constraintLeft_toRightOf="@+id/ascension"
-        app:layout_constraintRight_toLeftOf="@+id/glory"
-        app:layout_constraintTop_toBottomOf="@+id/skills" />
+        app:layout_constraintLeft_toRightOf="@+id/gearInfo1"
+        app:layout_constraintRight_toLeftOf="@+id/chest"
+        app:layout_constraintTop_toBottomOf="@+id/gold"
+        app:layout_constraintVertical_weight="30.8" />
 
     <TextView
         android:id="@+id/gear"
@@ -304,32 +342,33 @@
         android:layout_height="0dp"
         android:background="@drawable/border_menus"
         android:fontFamily="serif"
+        android:gravity="center"
         android:text="@string/gear"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="22sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="8"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/kingdom"
-        app:layout_constraintTop_toBottomOf="@+id/upgradeCritChance" />
+        app:layout_constraintTop_toBottomOf="@+id/upgradeCritChance"
+        app:layout_constraintVertical_weight="8" />
 
     <TextView
         android:id="@+id/quests"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_menus"
+        android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="quests"
         android:text="@string/quests"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:fontFamily="serif"
         android:textSize="22sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/kingdom"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feet" />
+        app:layout_constraintTop_toBottomOf="@+id/feet"
+        app:layout_constraintVertical_weight="8" />
 
     <TextView
         android:id="@+id/kingdom"
@@ -337,16 +376,16 @@
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
         android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="kingdom"
         android:text="@string/kingdom"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="22sp"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/gear"
         app:layout_constraintRight_toLeftOf="@+id/quests"
-        app:layout_constraintTop_toBottomOf="@+id/upgradeCritChance" />
+        app:layout_constraintTop_toBottomOf="@+id/upgradeCritChance"
+        app:layout_constraintVertical_weight="8" />
 
     <TextView
         android:id="@+id/upgradeQuality"
@@ -354,15 +393,16 @@
         android:layout_height="0dp"
         android:background="@drawable/border_epic_quality"
         android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="equipOrUnequip"
         android:text="Upgrade to (theQuality) quality"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="11.5"
-        app:layout_constraintRight_toLeftOf="@+id/glory"
+        app:layout_constraintBottom_toTopOf="@+id/upgradeBlockChance"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
         app:layout_constraintTop_toBottomOf="@+id/equipOrUnequip"
-        app:layout_constraintBottom_toTopOf="@+id/upgradeBlockChance" />
+        app:layout_constraintVertical_weight="9" />
 
     <TextView
         android:id="@+id/upgradeBlockChance"
@@ -370,15 +410,16 @@
         android:layout_height="0dp"
         android:background="@drawable/border_menus_highlight"
         android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="equipOrUnequip"
         android:text="Upgrade Block Chance"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="11.5"
-        app:layout_constraintRight_toLeftOf="@+id/glory"
+        app:layout_constraintBottom_toTopOf="@+id/upgradeCritChance"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
         app:layout_constraintTop_toBottomOf="@+id/upgradeQuality"
-        app:layout_constraintBottom_toTopOf="@+id/upgradeCritChance" />
+        app:layout_constraintVertical_weight="9" />
 
     <TextView
         android:id="@+id/upgradeCritChance"
@@ -386,23 +427,24 @@
         android:layout_height="0dp"
         android:background="@drawable/border_upgrade"
         android:fontFamily="serif"
+        android:gravity="center"
         android:onClick="equipOrUnequip"
         android:text="Upgrade Crit Chance"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:gravity="center"
-        app:layout_constraintVertical_weight="11.5"
-        app:layout_constraintRight_toLeftOf="@+id/glory"
+        app:layout_constraintBottom_toTopOf="@+id/gear"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/glory"
         app:layout_constraintTop_toBottomOf="@+id/upgradeBlockChance"
-        app:layout_constraintBottom_toTopOf="@+id/kingdom" />
+        app:layout_constraintVertical_weight="9" />
 
     <ImageView
         android:id="@+id/result"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/arrow_forward"
+        app:layout_constraintBottom_toTopOf="@+id/equipOrUnequip"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/glory"
         app:layout_constraintTop_toTopOf="@+id/gearInfo2"
-        app:layout_constraintBottom_toTopOf="@+id/equipOrUnequip" />
+        app:srcCompat="@drawable/arrow_forward" />
 </android.support.constraint.ConstraintLayout>

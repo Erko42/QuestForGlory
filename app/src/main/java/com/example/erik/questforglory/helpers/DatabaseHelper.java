@@ -7,20 +7,21 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "gear_Inventory_db3";
-    public static final String TABLE_NAME = "gear_Inventory_table3";
-    public static final String COL_1 = "ID";
-    public static final String COL_2 = "ISEQUIPED";
-    public static final String COL_3 = "NAME";
-    public static final String COL_4 = "RARITY";
-    public static final String COL_5 = "STATS";
-    public static final String COL_6 = "LEVEL";
-    public static final String COL_7 = "HEALTH";
-    public static final String COL_8 = "DEFENSE";
-    public static final String COL_9 = "DAMAGE";
-    public static final String COL_10 = "BLOCKCHANCE";
-    public static final String COL_11 = "CRITCHANCE";
-    public static final String COL_12 = "GOLDWORTH";
+
+    private static final String DATABASE_NAME = "gear_Inventory_db3";
+    private static final String TABLE_NAME = "gear_Inventory_table3";
+    private static final String COL_1 = "ID";
+    private static final String COL_2 = "ISEQUIPED";
+    private static final String COL_3 = "NAME";
+    private static final String COL_4 = "RARITY";
+    private static final String COL_5 = "STATS";
+    private static final String COL_6 = "LEVEL";
+    private static final String COL_7 = "HEALTH";
+    private static final String COL_8 = "DEFENSE";
+    private static final String COL_9 = "DAMAGE";
+    private static final String COL_10 = "BLOCKCHANCE";
+    private static final String COL_11 = "CRITCHANCE";
+    private static final String COL_12 = "GOLDWORTH";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -46,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public boolean insertData(int isEquiped, String name, String rarity, String stats, float level, float health, float defense, float damage, float blockChance, float critChance, float goldWorth) {
+    public void insertData(int isEquiped, String name, String rarity, String stats, float level, float health, float defense, float damage, float blockChance, float critChance, float goldWorth) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, isEquiped);
@@ -61,19 +62,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_11, critChance);
         contentValues.put(COL_12, goldWorth);
 
-        long result = db.insert(TABLE_NAME, null, contentValues);
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
+        db.insert(TABLE_NAME, null, contentValues);
     }
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        return res;
+        return db.rawQuery("select * from " + TABLE_NAME, null);
     }
-    public boolean updateData(String id, int isEquiped, String name, String rarity, String stats, float level, float health, float defense, float damage, float blockChance, float critChance, float goldWorth) {
+    public void updateData(String id, int isEquiped, String name, String rarity, String stats, float level, float health, float defense, float damage, float blockChance, float critChance, float goldWorth) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1, id);
@@ -89,7 +84,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_11, critChance);
         contentValues.put(COL_12, goldWorth);
         db.update(TABLE_NAME, contentValues, "ID = ?", new String[] { id });
-        return true;
     }
     public void deleteData(String id) {
         SQLiteDatabase db = this.getWritableDatabase();

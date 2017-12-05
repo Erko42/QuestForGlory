@@ -21,7 +21,6 @@ public class Enchanting extends AppCompatActivity {
     Potion healthPotion;
     TextView level;
     TextView XP;
-    TextView herbs;
     TextView gold;
     String levelText;
     String XPText;
@@ -40,7 +39,6 @@ public class Enchanting extends AppCompatActivity {
 
         level = findViewById(R.id.level);
         XP = findViewById(R.id.XP);
-        herbs = findViewById(R.id.herbs);
         gold = findViewById(R.id.gold);
 
         levelText = "Level " + (int) player.getLevel();
@@ -50,7 +48,6 @@ public class Enchanting extends AppCompatActivity {
 
         level.setText(levelText);
         XP.setText(XPText);
-        herbs.setText(herbsText);
         gold.setText(goldText);
     }
     public void saveObjectsInBundle() {
