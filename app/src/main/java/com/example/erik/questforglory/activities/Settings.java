@@ -16,10 +16,12 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     public void mainMenu(View view) {
         intent = new Intent(this, MainActivity.class);
         startActivity(intent);

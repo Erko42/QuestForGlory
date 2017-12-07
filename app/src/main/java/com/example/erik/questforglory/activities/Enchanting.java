@@ -40,6 +40,8 @@ public class Enchanting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enchanting);
 
+        bundle = new Bundle();
+
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
         golem = (Monster) getIntent().getSerializableExtra("golem");
@@ -63,8 +65,8 @@ public class Enchanting extends AppCompatActivity {
         XP.setText(XPText);
         gold.setText(goldText);
     }
+
     public void saveObjectsInBundle() {
-        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);
@@ -78,26 +80,32 @@ public class Enchanting extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, Kingdom.class);
         saveObjectsInBundle();
     }
+
     public void glory(View view) {
         intent = new Intent(this, Glory.class);
         saveObjectsInBundle();
     }
+
     public void ascension(View view) {
         intent = new Intent(this, Ascension.class);
         saveObjectsInBundle();
     }
+
     public void skills(View view) {
         intent = new Intent(this, Skills.class);
         saveObjectsInBundle();
     }
+
     public void gear(View view) {
         intent = new Intent(this, Gear.class);
         saveObjectsInBundle();
     }
+
     public void quests(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();

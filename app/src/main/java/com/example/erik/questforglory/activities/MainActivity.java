@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
+        bundle = new Bundle();
+
         newGame = findViewById(R.id.newGame);
         start = findViewById(R.id.start);
         areYouSureGrid = findViewById(R.id.areYouSureGrid);
@@ -346,7 +348,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveObjectsInBundle() {
-        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);

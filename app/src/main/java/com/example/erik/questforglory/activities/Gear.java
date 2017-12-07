@@ -86,6 +86,9 @@ public class Gear extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        bundle = new Bundle();
+
         displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenHeight = displayMetrics.heightPixels;
@@ -107,7 +110,6 @@ public class Gear extends AppCompatActivity {
         initGearInventory();
     }
     public void saveObjectsInBundle() {
-        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);

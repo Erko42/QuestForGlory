@@ -53,6 +53,8 @@ public class Ascension extends AppCompatActivity {
 
         preferences = getSharedPreferences("Data", 0);
 
+        bundle = new Bundle();
+
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
         golem = (Monster) getIntent().getSerializableExtra("golem");
@@ -84,7 +86,6 @@ public class Ascension extends AppCompatActivity {
     }
 
     public void saveObjectsInBundle() {
-        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);

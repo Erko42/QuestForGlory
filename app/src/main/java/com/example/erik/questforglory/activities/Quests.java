@@ -54,6 +54,8 @@ public class Quests extends AppCompatActivity {
 
         preferences = getSharedPreferences("Data", 0);
 
+        bundle = new Bundle();
+
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-6115526968446578/1787476245");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());

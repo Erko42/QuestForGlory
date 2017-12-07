@@ -93,6 +93,8 @@ public class TheMountain extends AppCompatActivity {
 
         preferences = getSharedPreferences("Data", 0);
 
+        bundle = new Bundle();
+
         player = (Player) getIntent().getSerializableExtra("player");
         spriggan = (Monster) getIntent().getSerializableExtra("spriggan");
         golem = (Monster) getIntent().getSerializableExtra("golem");
@@ -181,84 +183,84 @@ public class TheMountain extends AppCompatActivity {
 
         checkPlayer();
 
-        if(charge.isOnDurationCooldown()) {
+        if (charge.isOnDurationCooldown()) {
             chargeImage.setImageAlpha(125);
             chargeDurationCooldown.setVisibility(View.VISIBLE);
 
-            if(charge.getCurrentDuration() > 0) {
+            if (charge.getCurrentDuration() > 0) {
                 chargeDurationCooldownText = "Duration: " + Math.round(charge.getCurrentDuration());
                 chargeDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 chargeDurationCooldown.setText(chargeDurationCooldownText);
-            } else if(charge.getCurrentDuration() < 1) {
+            } else if (charge.getCurrentDuration() < 1) {
                 chargeDurationCooldownText = "Cooldown: " + Math.round(charge.getCurrentCooldown() + 1);
                 chargeDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 chargeDurationCooldown.setText(chargeDurationCooldownText);
             }
         }
-        if(mend.isOnDurationCooldown()) {
+        if (mend.isOnDurationCooldown()) {
             mendImage.setImageAlpha(125);
             mendDurationCooldown.setVisibility(View.VISIBLE);
 
-            if(mend.getCurrentDuration() > 0) {
+            if (mend.getCurrentDuration() > 0) {
                 mendDurationCooldownText = "Duration: " + Math.round(mend.getCurrentDuration());
                 mendDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 mendDurationCooldown.setText(mendDurationCooldownText);
-            } else if(mend.getCurrentDuration() < 1) {
+            } else if (mend.getCurrentDuration() < 1) {
                 mendDurationCooldownText = "Cooldown: " + Math.round(mend.getCurrentCooldown() + 1);
                 mendDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 mendDurationCooldown.setText(mendDurationCooldownText);
             }
         }
-        if(defenseUp.isOnDurationCooldown()) {
+        if (defenseUp.isOnDurationCooldown()) {
             defenseUpImage.setImageAlpha(125);
             defenseUpDurationCooldown.setVisibility(View.VISIBLE);
 
-            if(defenseUp.getCurrentDuration() > 0) {
+            if (defenseUp.getCurrentDuration() > 0) {
                 defenseUpDurationCooldownText = "Duration: " + Math.round(defenseUp.getCurrentDuration());
                 defenseUpDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 defenseUpDurationCooldown.setText(defenseUpDurationCooldownText);
-            } else if(defenseUp.getCurrentDuration() < 1) {
+            } else if (defenseUp.getCurrentDuration() < 1) {
                 defenseUpDurationCooldownText = "Cooldown: " + Math.round(defenseUp.getCurrentCooldown() + 1);
                 defenseUpDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 defenseUpDurationCooldown.setText(defenseUpDurationCooldownText);
             }
         }
-        if(damagePotion.isOnDurationCooldown()) {
+        if (damagePotion.isOnDurationCooldown()) {
             damagePotionImage.setImageAlpha(125);
             damagePotionDurationCooldown.setVisibility(View.VISIBLE);
 
-            if(damagePotion.getCurrentDuration() > 0) {
+            if (damagePotion.getCurrentDuration() > 0) {
                 damagePotionDurationCooldownText = "Duration: " + Math.round(damagePotion.getCurrentDuration());
                 damagePotionDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 damagePotionDurationCooldown.setText(damagePotionDurationCooldownText);
-            } else if(damagePotion.getCurrentDuration() < 1) {
+            } else if (damagePotion.getCurrentDuration() < 1) {
                 damagePotionDurationCooldownText = "Cooldown: " + Math.round(damagePotion.getCurrentCooldown() + 1);
                 damagePotionDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 damagePotionDurationCooldown.setText(damagePotionDurationCooldownText);
             }
         }
-        if(healthPotion.isOnDurationCooldown()) {
+        if (healthPotion.isOnDurationCooldown()) {
             healthPotionImage.setImageAlpha(125);
             healthPotionDurationCooldown.setVisibility(View.VISIBLE);
 
-            if(healthPotion.getCurrentDuration() > 0) {
+            if (healthPotion.getCurrentDuration() > 0) {
                 healthPotionDurationCooldownText = "Duration: " + Math.round(healthPotion.getCurrentDuration());
                 healthPotionDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 healthPotionDurationCooldown.setText(healthPotionDurationCooldownText);
-            } else if(damagePotion.getCurrentDuration() < 1) {
+            } else if (damagePotion.getCurrentDuration() < 1) {
                 healthPotionDurationCooldownText = "Cooldown: " + Math.round(healthPotion.getCurrentCooldown() + 1);
                 healthPotionDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 healthPotionDurationCooldown.setText(healthPotionDurationCooldownText);
             }
         }
-        if(!player.isAlive()) {
+        if (!player.isAlive()) {
             youAreDeadGrid.setVisibility(View.VISIBLE);
             youAreDead.setVisibility(View.VISIBLE);
             accept.setVisibility(View.VISIBLE);
         }
     }
+
     public void saveObjectsInBundle() {
-        bundle = new Bundle();
         bundle.putSerializable("player", player);
         bundle.putSerializable("spriggan", spriggan);
         bundle.putSerializable("golem", golem);
@@ -272,10 +274,12 @@ public class TheMountain extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
     public void onBackPressed() {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();
     }
+
     public void revive(View view) {
         youAreDeadGrid.setVisibility(View.INVISIBLE);
         youAreDead.setVisibility(View.INVISIBLE);
@@ -293,34 +297,37 @@ public class TheMountain extends AppCompatActivity {
 
         newBattle();
     }
+
     public void checkDamagePotion() {
-        if(damagePotion.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.VISIBLE) {
+        if (damagePotion.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.VISIBLE) {
             damagePotion.tickDuration();
             damagePotionDurationCooldownText = "Duration: " + Math.round(damagePotion.getCurrentDuration());
             damagePotionDurationCooldown.setText(damagePotionDurationCooldownText);
         }
-        if(damagePotion.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+        if (damagePotion.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
             damagePotionDurationCooldown.setVisibility(View.INVISIBLE);
             damagePotionImage.setImageAlpha(255);
             damagePotion.refresh();
             player.setBattleDamage(player.getDamage());
         }
     }
+
     public void checkHealthPotion() {
-        if(healthPotion.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive() && healthPotionDurationCooldown.getVisibility() == View.VISIBLE) {
+        if (healthPotion.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive() && healthPotionDurationCooldown.getVisibility() == View.VISIBLE) {
             healthPotion.tickDuration();
             healthPotionDurationCooldownText = "Duration: " + Math.round(healthPotion.getCurrentDuration());
             healthPotionDurationCooldown.setText(healthPotionDurationCooldownText);
         }
-        if(healthPotion.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+        if (healthPotion.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
             healthPotionDurationCooldown.setVisibility(View.INVISIBLE);
             healthPotionImage.setImageAlpha(255);
             healthPotion.refresh();
             player.setBattleDamage(player.getDamage());
         }
     }
+
     public void checkgolem() {
-        if(Math.round(golem.getHealth()) <= 0) {
+        if (Math.round(golem.getHealth()) <= 0) {
             golem.setAlive(false);
             golem.setHealth(Math.round(golem.getMaxHealth()));
             player.resetBattleDefense();
@@ -330,7 +337,7 @@ public class TheMountain extends AppCompatActivity {
 
             gearPieceReward = new GearPiece(0, "gear piece", "rarity", "stats", 1, 50, 1, 5, 0, 0, 160, 120, 40);
 
-            if(golem.getLevel() > 1) {
+            if (golem.getLevel() > 1) {
                 for (int i = 1; i < golem.getLevel(); i++) {
                     gearPieceReward.levelUp();
                 }
@@ -345,10 +352,10 @@ public class TheMountain extends AppCompatActivity {
             whichGearPieceType = 0;
             whichGearPieceRarity = 1;
 
-            for(int y = 5; y <= 15; y += gearPieceMaxRarityDropChance) {
-                if(gearPieceDropChance <= y && gearPieceDropChance >= (gearPieceMinRarityDropChance + y - gearPieceMaxRarityDropChance)) {
-                    for(int i = 0; i <= 99; i += 9) {
-                        if(gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && (gearPieceType.get(whichGearPieceType).equals("MainHand Sword") || gearPieceType.get(whichGearPieceType).equals("OffHand Sword"))) {
+            for (int y = 5; y <= 15; y += gearPieceMaxRarityDropChance) {
+                if (gearPieceDropChance <= y && gearPieceDropChance >= (gearPieceMinRarityDropChance + y - gearPieceMaxRarityDropChance)) {
+                    for (int i = 0; i <= 99; i += 9) {
+                        if (gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && (gearPieceType.get(whichGearPieceType).equals("MainHand Sword") || gearPieceType.get(whichGearPieceType).equals("OffHand Sword"))) {
                             theGearPiece = new GearPiece(
                                     gearPieceReward.getIsEquiped(),
                                     gearPieceType.get(whichGearPieceType),
@@ -399,7 +406,7 @@ public class TheMountain extends AppCompatActivity {
                                     gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
                                     break;
                             }
-                        } else if(gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && gearPieceType.get(whichGearPieceType).equals("MainHand Shield")) {
+                        } else if (gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && gearPieceType.get(whichGearPieceType).equals("MainHand Shield")) {
                             theGearPiece = new GearPiece(
                                     gearPieceReward.getIsEquiped(),
                                     gearPieceType.get(whichGearPieceType),
@@ -450,8 +457,8 @@ public class TheMountain extends AppCompatActivity {
                                     gearPieceRewardView.setBackgroundResource(R.drawable.border_legendary_quality);
                                     break;
                             }
-                        } else if(gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && !gearPieceType.get(whichGearPieceType).equals("MainHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Shield")) {
-                            if(gearPieceOffOrDefChance <= 50) {
+                        } else if (gearPieceTypeChance > i && gearPieceTypeChance <= (i + 9) && !gearPieceType.get(whichGearPieceType).equals("MainHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Sword") && !gearPieceType.get(whichGearPieceType).equals("OffHand Shield")) {
+                            if (gearPieceOffOrDefChance <= 50) {
                                 theGearPiece = new GearPiece(
                                         gearPieceReward.getIsEquiped(),
                                         gearPieceType.get(whichGearPieceType),
@@ -570,7 +577,7 @@ public class TheMountain extends AppCompatActivity {
             home.setVisibility(View.VISIBLE);
             Continue.setVisibility(View.VISIBLE);
 
-            if(player.getXP() >= player.getXPToNextLevel()) {
+            if (player.getXP() >= player.getXPToNextLevel()) {
                 player.decreaseMaxHealth(player.getMaxHealthGearBonus());
                 player.decreaseDefense(player.getDefenseGearBonus());
                 player.decreaseDamage(player.getDamageGearBonus());
@@ -580,10 +587,9 @@ public class TheMountain extends AppCompatActivity {
                 player.increaseDamage(player.getDamageGearBonus());
 
                 playerHealthText = "  Health: " + Math.round(player.getHealth()) + " / " + Math.round(player.getMaxHealth()) + "  ";
-
                 playerHealth.setText(playerHealthText);
             }
-            if(golem.getLevel() == golem.getMaxLevel()) {
+            if (golem.getLevel() == golem.getMaxLevel()) {
                 golem.increaseMaxLevel();
                 preferences.edit().putFloat("golemMaxLevel", golem.getMaxLevel()).apply();
             }
@@ -631,10 +637,12 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putFloat("soulDust", player.getSoulDust()).apply();
         }
     }
+
     public void home(View view) {
         intent = new Intent(this, Quests.class);
         saveObjectsInBundle();
     }
+
     public void Continue(View view) {
         golemDefeatedGrid.setVisibility(View.INVISIBLE);
         golemDefeated.setVisibility(View.INVISIBLE);
@@ -644,6 +652,7 @@ public class TheMountain extends AppCompatActivity {
 
         newBattle();
     }
+
     public void checkPlayer() {
         if(Math.round(player.getHealth()) <= 0) {
             player.setAlive(false);
@@ -653,9 +662,10 @@ public class TheMountain extends AppCompatActivity {
             accept.setVisibility(View.VISIBLE);
         }
     }
+
     public void checkCharge() {
-        if(player.isAlive() && golem.isAlive() && chargeDurationCooldown.getVisibility() == View.INVISIBLE) {
-            if(player.getBattleDefense() >= golem.getDamage()) {
+        if (player.isAlive() && golem.isAlive() && chargeDurationCooldown.getVisibility() == View.INVISIBLE) {
+            if (player.getBattleDefense() >= golem.getDamage()) {
                 player.setBattleDefense(golem.getDamage());
             }
             player.takeDamage(golem.getDamage() - player.getBattleDefense());
@@ -663,28 +673,28 @@ public class TheMountain extends AppCompatActivity {
             playerHealth.setText(playerHealthText);
             preferences.edit().putFloat("health", player.getHealth()).apply();
         }
-        if(player.isAlive() && golem.isAlive() && chargeDurationCooldown.getVisibility() == View.VISIBLE) {
-            if(charge.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
-                if(player.getBattleDefense() >= golem.getDamage()) {
+        if (player.isAlive() && golem.isAlive() && chargeDurationCooldown.getVisibility() == View.VISIBLE) {
+            if (charge.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+                if (player.getBattleDefense() >= golem.getDamage()) {
                     player.setBattleDefense(golem.getDamage());
                 }
                 player.takeDamage(golem.getDamage() - player.getBattleDefense());
                 playerHealthText = "  Health: " + Math.round(player.getHealth()) + " / " + Math.round(player.getMaxHealth()) + "  ";
                 playerHealth.setText(playerHealthText);
             }
-            if(charge.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
+            if (charge.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
                 charge.tickDuration();
                 chargeDurationCooldownText = "Duration: " + Math.round(charge.getCurrentDuration());
                 chargeDurationCooldown.setBackgroundResource(R.drawable.border_quest);
                 chargeDurationCooldown.setText(chargeDurationCooldownText);
             }
-            if(charge.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+            if (charge.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
                 charge.tickCooldown();
                 chargeDurationCooldownText = "Cooldown: " + Math.round(charge.getCurrentCooldown() + 1);
                 chargeDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 chargeDurationCooldown.setText(chargeDurationCooldownText);
             }
-            if(charge.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
+            if (charge.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
                 chargeDurationCooldown.setVisibility(View.INVISIBLE);
                 chargeImage.setImageAlpha(255);
                 charge.setOnDurationCooldown(false);
@@ -696,12 +706,13 @@ public class TheMountain extends AppCompatActivity {
         preferences.edit().putFloat("chargeCurrentCooldown", charge.getCurrentCooldown()).apply();
         preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
     }
+
     public void checkMend() {
-        if(mendDurationCooldown.getVisibility() == View.VISIBLE) {
-            if(mend.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
+        if (mendDurationCooldown.getVisibility() == View.VISIBLE) {
+            if (mend.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
                 mend.tickDuration();
                 player.increaseHealth(player.getMaxHealth() * mend.getHealing() / 100);
-                if(player.getHealth() > player.getMaxHealth()) {
+                if (player.getHealth() > player.getMaxHealth()) {
                     player.setHealth(player.getMaxHealth());
                 }
                 playerHealthText = "  Health: " + Math.round(player.getHealth()) + " / " + Math.round(player.getMaxHealth()) + "  ";
@@ -710,13 +721,13 @@ public class TheMountain extends AppCompatActivity {
                 mendDurationCooldown.setText(mendDurationCooldownText);
                 playerHealth.setText(playerHealthText);
             }
-            if(mend.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+            if (mend.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
                 mend.tickCooldown();
                 mendDurationCooldownText = "Cooldown: " + Math.round(mend.getCurrentCooldown() + 1);
                 mendDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 mendDurationCooldown.setText(mendDurationCooldownText);
             }
-            if(mend.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
+            if (mend.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
                 mendDurationCooldown.setVisibility(View.INVISIBLE);
                 mendImage.setImageAlpha(255);
                 mend.setOnDurationCooldown(false);
@@ -728,9 +739,10 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
         }
     }
+
     public void checkDefenseUp() {
-        if(defenseUpDurationCooldown.getVisibility() == View.VISIBLE) {
-            if(defenseUp.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
+        if (defenseUpDurationCooldown.getVisibility() == View.VISIBLE) {
+            if (defenseUp.getCurrentDuration() > 0 && player.isAlive() && golem.isAlive()) {
                 defenseUp.tickDuration();
                 player.increaseBattleDefense(player.getDefense() * (defenseUp.getDefense() / 100));
 
@@ -740,13 +752,13 @@ public class TheMountain extends AppCompatActivity {
                 defenseUpDurationCooldown.setText(defenseUpDurationCooldownText);
                 playerHealth.setText(playerHealthText);
             }
-            if(defenseUp.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
+            if (defenseUp.getCurrentDuration() < 1 && player.isAlive() && golem.isAlive()) {
                 defenseUp.tickCooldown();
                 defenseUpDurationCooldownText = "Cooldown: " + Math.round(defenseUp.getCurrentCooldown() + 1);
                 defenseUpDurationCooldown.setBackgroundResource(R.drawable.border_level_xp);
                 defenseUpDurationCooldown.setText(defenseUpDurationCooldownText);
             }
-            if(defenseUp.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
+            if (defenseUp.getCurrentCooldown() < 0 && player.isAlive() && golem.isAlive()) {
                 defenseUpDurationCooldown.setVisibility(View.INVISIBLE);
                 defenseUpImage.setImageAlpha(255);
                 defenseUp.setOnDurationCooldown(false);
@@ -758,6 +770,7 @@ public class TheMountain extends AppCompatActivity {
         preferences.edit().putFloat("defenseUpCurrentCooldown", defenseUp.getCurrentCooldown()).apply();
         preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
     }
+
     public void useStrike(View view) {
         if (player.isAlive() && golem.isAlive()) {
             golem.takeDamage(player.getBattleDamage() * strike.getDamage() / 100);
@@ -773,6 +786,7 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putFloat("golemHealth", golem.getHealth()).apply();
         }
     }
+
     public void useCharge(View view) {
         if (player.isAlive() && golem.isAlive() && chargeDurationCooldown.getVisibility() == View.INVISIBLE) {
             golem.takeDamage(player.getBattleDamage() * charge.getDamage() / 100);
@@ -792,6 +806,7 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("chargeIsOnDurationCooldown", charge.isOnDurationCooldown()).apply();
         }
     }
+
     public void useMend(View view) {
         if (player.isAlive() && golem.isAlive() && mendDurationCooldown.getVisibility() == View.INVISIBLE) {
             mendImage.setImageAlpha(125);
@@ -807,6 +822,7 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("mendIsOnDurationCooldown", mend.isOnDurationCooldown()).apply();
         }
     }
+
     public void useDefenseUp(View view) {
         if (player.isAlive() && golem.isAlive() && defenseUpDurationCooldown.getVisibility() == View.INVISIBLE) {
             defenseUpImage.setImageAlpha(125);
@@ -822,8 +838,9 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("defenseUpIsOnDurationCooldown", defenseUp.isOnDurationCooldown()).apply();
         }
     }
+
     public void useHealthPotion(View view) {
-        if(healthPotion.getAmount() > 0 && player.getHealth() != player.getMaxHealth() && player.isAlive() && golem.isAlive() && healthPotionDurationCooldown.getVisibility() == View.INVISIBLE) {
+        if (healthPotion.getAmount() > 0 && player.getHealth() != player.getMaxHealth() && player.isAlive() && golem.isAlive() && healthPotionDurationCooldown.getVisibility() == View.INVISIBLE) {
             healthPotionImage.setImageAlpha(125);
             healthPotionDurationCooldown.setVisibility(View.VISIBLE);
             healthPotion.setOnDurationCooldown(true);
@@ -848,9 +865,9 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("healthPotionIsOnDurationCooldown", healthPotion.isOnDurationCooldown()).apply();
         }
     }
+
     public void useDamagePotion(View view) {
-        if (damagePotion.getAmount() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.INVISIBLE)
-        {
+        if (damagePotion.getAmount() > 0 && player.isAlive() && golem.isAlive() && damagePotionDurationCooldown.getVisibility() == View.INVISIBLE) {
             damagePotionImage.setImageAlpha(125);
             damagePotionDurationCooldown.setVisibility(View.VISIBLE);
             damagePotion.setOnDurationCooldown(true);
@@ -869,6 +886,7 @@ public class TheMountain extends AppCompatActivity {
             preferences.edit().putBoolean("damagePotionIsOnDurationCooldown", damagePotion.isOnDurationCooldown()).apply();
         }
     }
+
     public void newBattle() {
         player.setBattleDamage(player.getDamage());
         player.setBattleDefense(player.getDefense());
