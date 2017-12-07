@@ -51,6 +51,7 @@ public class Enchanting extends AppCompatActivity {
         charge = (Skill) getIntent().getSerializableExtra("charge");
         mend = (Skill) getIntent().getSerializableExtra("mend");
         defenseUp = (Skill) getIntent().getSerializableExtra("defenseUp");
+        gearPiece = (GearPiece) getIntent().getSerializableExtra("gearPiece");
 
         level = findViewById(R.id.level);
         XP = findViewById(R.id.XP);
